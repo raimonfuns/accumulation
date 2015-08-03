@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var foo = 'abc';
+with({foo: 'def'}) {
+    function f() {
+        alert(foo);
+    }
+    (function() {
+        alert(foo); // def
+    })();
+    f(); // abc
+}
+// 结论是: 主要是为了证明函数声明和函数表达式的不同，函数表达式是在执行到的时候才进入词法作用域，当前词法作用域（有可能被改变，如with）是谁，那么它创建的词作用域的outer就实现谁
+</script>
+</body>
+</html>

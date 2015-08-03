@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="purify.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oText = document.getElementById('text');
+            var oBtn = document.getElementById('btn');
+
+            oBtn.onclick = function () {
+                var oP = document.createElement('p');
+                oP.innerHTML = DOMPurify.sanitize(oText.value);
+                console.log(DOMPurify.sanitize(oText.value));
+                document.body.appendChild(oP);
+            }
+        }
+    </script>
+</head>
+<body style="background: #272822; color:#fff;">
+    <input id="text" type="text" value="<a onclick='alert(1)'>点击</a>">
+    <input id="btn" type="button" value="确定">
+</body>
+</html>

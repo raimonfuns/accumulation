@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>超酷数码钟表 - 智能社 - www.zhinengshe.com</title>
+<link href="style/zns_style.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+// 效果思路:
+
+// 获取系统时间
+//     Date对象
+//     getHours、getMinutes、getSeconds
+// 显示系统时间
+//     字符串连接
+//     空位补零
+// 设置图片路径
+//     charAt方法
+window.onload = function () {
+    
+    var oClock = document.getElementById('clock');
+    var aImg = oClock.getElementsByTagName('img');
+    var aNumImg = [];
+
+    for (var i = 0; i < aImg.length; i++) {
+        if (aImg[i].className === 'num') {
+            aNumImg.push(aImg[i]);
+        }
+    }
+
+    var aWeek = [  // 星期
+        'one',
+        'two',
+        'three',
+        'four',
+        'five',
+        'six',
+        'seven',
+    ];
+
+    function getByClass(parent, className) {
+        var elements = parent.getElementsByTagName('*');
+        var resultArr = [];
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].className === className) {
+                resultArr.push(elements[i]);
+            }
+        }
+        return resultArr;
+    }
+
+    function toDouble(num) {
+        return num < 10 ? '0' + num : '' + num;
+    }
+
+    function upDate() {
+        var aNow = getTimeArray();
+
+        for (var i = 0; i < aNumImg.length; i++) {
+            aNumImg[i].src = 'images/' + aNow.charAt(i) + '.png';
+        }
+    }
+
+    setInterval(upDate, 1000);
+
+    function getTimeArray() {
+        var oDate = new Date();
+        var aNumber = [];
+        
+        var iYear = oDate.getFullYear();
+        var iMonth = oDate.getMonth();
+        var iDay = oDate.getDate();
+        var iHour = oDate.getHours();
+        var iMin = oDate.getMinutes();
+        var iSec = oDate.getSeconds();
+        var iWeek = (oDate.getDay()+6)%7;
+
+        var str = ''+iYear+toDouble(iMonth+1)+toDouble(iDay)+toDouble(iHour)+toDouble(iMin)+toDouble(iSec)+iWeek;
+        var aNumber = str;
+        return aNumber;
+    }
+}
+</script>
+<body>
+
+<div id="clock" class="date">
+    <!-- <h2><img src="images/title.png" /></h2> -->
+    <div class="year">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/year.png" alt="year" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/month.png" alt="month" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/seven.png" alt="seven" />
+    </div>
+    <div class="time">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="pos2" src="images/week.png" alt="week" />
+        <img class="num2" src="images/one.png" alt="one" />
+    </div>
+</div>
+
+</body>
+</html>

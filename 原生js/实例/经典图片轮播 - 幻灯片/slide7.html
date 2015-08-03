@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>百度商业服务市场-轮换图1</title>
+<style type="text/css">
+body{background: #272822;}
+body, ul{ margin:0; padding:0;}
+li{list-style:none;}
+a{color:#0a8cd2;text-decoration:none;cursor: pointer;}
+a:hover{text-decoration:underline;}
+h2{font-size: 30px; text-align: center;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{display:inline-block;}
+.clearfix{display:block;}
+.clear{clear:both;height:0;font:0/0 Arial;visibility:hidden;}
+.none{display:none}
+/* main.css */
+.wrapper{text-align:center;width:980px;margin:100px auto;position:relative}
+.index-banner{width:980px;height:208px;position:relative;overflow: hidden;}
+.index-banner{width: 980px; position: relative; height: 210px; overflow:hidden;}
+.index-banner ul{z-index:2;position: absolute;top: 0;left: 0;}
+.img-li-float{float:left}
+.banner-ico-box{position:absolute;left:0;bottom:20px;width:100%;text-align:center; z-index:4;}
+.banner-ico-box a{width:10px;height:10px;display:inline-block;background:url(img/banner-btn.png) -16px -50px no-repeat;margin-right:8px}
+.banner-ico-box .active{width:10px;height:10px;display:inline-block;background:url(img/banner-btn.png) -1px -50px no-repeat}
+.banner-left-btn,.banner-right-btn{ z-index:3;width:50px;height:50px;display:inline-block;position:absolute;top:50%;margin-top:-25px;}
+.banner-left-btn{background:url(img/banner-btn.png) 0 0 no-repeat;left:0;}
+.banner-right-btn{background:url(img/banner-btn.png) -50px 0 no-repeat;right:0;}
+</style>
+</head>
+<body>
+<h2>百度商业服务市场 - 轮播图</h2>
+<div class="wrapper">
+    <div id="index-banner" class="index-banner">
+        <ul>
+            <li class="img-li-float">
+                <a target="_blank"><img src="img/1.jpg"></a>
+            </li>
+            <li class="img-li-float">
+                <a target="_blank"><img src="img/2.png"></a>
+            </li>
+            <li class="img-li-float">
+                <a target="_blank"><img src="img/3.jpg"></a>
+            </li>
+            <li class="img-li-float">
+                <a target="_blank"><img src="img/4.png"></a>
+            </li>
+            <li class="img-li-float">
+                <a target="_blank"><img src="img/5.jpg"></a>
+            </li>
+        </ul>
+        <div id="ico" class="banner-ico-box">
+            <a class="active"></a>
+            <a class=""></a>
+            <a class=""></a>
+            <a class=""></a>
+            <a class=""></a>
+        </div>
+        <a id="prev" class="banner-left-btn"></a>
+        <a id="next" class="banner-right-btn"></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+function Slider(id, options) {
+    options = options || {};
+    this.init(id, options);
+}
+Slider.prototype = {
+    init: function (id, options) {
+        var _this = this;
+        this.oDiv = document.getElementById(id);
+        this.oUl = this.oDiv.getElementsByTagName('ul')[0];
+        this.aLi = this.oUl.getElementsByTagName('li');
+        this.oIcon = document.getElementById('ico');
+        this.aBtn = this.oIcon.getElementsByTagName('a');
+        this.oPrev = document.getElementById('prev');
+        this.oNext = document.getElementById('next');
+        this.now = 0;
+        this.timer = null;
+        this.isMoveing = false;
+        this.effect = options.effect || 'left';
+        this.trigger = options.trigger || 'click';
+
+        // 初始化ul宽度
+        if (this.effect === 'leftLoop') {
+            this.oUl.style.left = -this.aLi[0].offsetWidth + 'px'; // 是否循环播放
+            this.oUl.appendChild(this.aLi[0].cloneNode(true));
+            this.oUl.insertBefore(this.aLi[this.aLi.length - 2].cloneNode(true), this.aLi[0]);
+        }
+        this.oUl.style.width = this.aLi[0].offsetWidth*this.aLi.length + 'px';
+        // 按钮绑定点击事件
+        this.addEvent(this.oPrev, "click", function () {_this.doPrev.call(_this)});
+        this.addEvent(this.oNext, "click", function () {_this.doNext.call(_this)});
+        for (var i = 0; i < this.aBtn.length; i++) {
+            this.aBtn[i].index = i;
+            (function (i) {
+                console.log(_this.aBtn);
+                _this.addEvent(_this.aBtn[i], "click", function () {
+                    _this.now = _this.aBtn[i].index;
+                    _this.doSwicth.call(_this);
+                });
+            })(i);
+        }
+        // 自动播放
+        this.timer = setInterval(function () {
+            if (_this.effect === 'left' || _this.effect === 'leftLoop' || _this.effect === 'fade') {
+                _this.doNext();
+            } else if (_this.effect === 'right') {
+                _this.doPrev();
+            }
+            
+        }, 2000);
+        this.oDiv.onmouseover = function () {
+            clearInterval(_this.timer);
+        }
+        this.oDiv.onmouseout = function () {
+            _this.timer = setInterval(function () {
+                if (_this.effect === 'left') {
+                    _this.doNext();
+                } else if (_this.effect === 'right') {
+                    _this.doPrev();
+                }
+            }, 2000);
+        }
+    },
+    doPrev: function () {
+        if (!this.isMoveing) {
+            this.now--
+            this.doSwicth();
+        }
+    },
+    doNext: function () {
+        if (!this.isMoveing) {
+            this.now++;
+            this.doSwicth();
+        }
+    },
+    // 按钮切换、大图切换
+    doSwicth: function () {
+        var _this = this;
+        this.isMoveing = true;
+        if (this.effect === 'leftLoop') {
+            if (this.now === (this.aLi.length - 2)) {
+                this.doMove(this.oUl, {left: '-' + this.aLi[0].offsetWidth*(this.aLi.length - 1)}, function () {
+                    this.oUl.style.left = -this.aLi[0].offsetWidth + 'px';
+                    this.isMoveing = false; 
+                });
+                this.now = 0;
+            } else if (this.now === -1) {
+                this.doMove(this.oUl, {left: 0}, function () {
+                    this.oUl.style.left = -this.aLi[0].offsetWidth*(this.aLi.length - 2) + 'px'; 
+                    this.isMoveing = false; 
+
+                });
+                this.now = this.aLi.length - 3;
+            } else {
+                this.doMove(this.oUl, {left: '-' + this.aLi[0].offsetWidth*(this.aBtn[this.now].index + 1)}, function () {
+                    this.isMoveing = false; 
+                });  
+            }
+        } else if (this.effect === 'fade') {
+            if (this.now === this.aLi.length) {
+                this.now = 0;
+            } else if (this.now === -1) {
+                this.now = this.aLi.length-1;
+            }
+            this.css(this.oUl, 'opacity', 0);
+            this.css(this.oUl, 'left', '-' + this.aLi[0].offsetWidth*(this.aBtn[this.now].index));
+            this.doMove(this.oUl, {opacity: 100});  
+            this.isMoveing = false; 
+        } else { // 正常播放
+            if (this.now === this.aLi.length) {
+                this.now = 0;
+            } else if (this.now === -1) {
+                this.now = this.aLi.length-1;
+            }
+            this.doMove(this.oUl, {left: '-' + this.aLi[0].offsetWidth*(this.aBtn[this.now].index)}, function () {
+                this.isMoveing = false; 
+            });  
+
+        }
+        
+
+        for (var i = 0; i < this.aBtn.length; i++) {
+            this.aBtn[i].className = '';
+        }
+        this.aBtn[this.now].className = 'active';
+    },
+    addEvent: function (oElement, sEventType, fnHandle) {
+        oElement.addEventListener ? oElement.addEventListener(sEventType, fnHandle, false) : oElement.attachEvent('on' + sEventType, fnHandle);
+    },
+    css: function (oElement, attr, value) {
+        if (arguments.length === 2) {
+            return oElement.currentStyle ? oElement.currentStyle[attr] : getComputedStyle(oElement, false)[attr];
+        } else if (arguments.length === 3) {
+            switch(attr) {
+                case 'width':
+                case 'height':
+                case 'top':
+                case 'left':
+                case 'bottom':
+                    oElement.style[attr] = value + 'px';
+                    break;
+                case 'opacity':
+                    oElement.style.filter = 'alpha(opcity:' + value + ')';
+                    oElement.style.opacity = value / 100;
+                    break;
+                default:
+                    oElement.style[attr] = value;
+                    break;
+            }
+        }
+    },
+    doMove: function (oElement, oAttr, fnCallback) {
+        var _this = this;
+        clearInterval(oElement.timer);
+        oElement.timer = setInterval(function () {
+            var bStop = true;
+            for (var property in oAttr) {
+                var iCur = parseFloat(_this.css(oElement, property));
+                property === 'opacity' && (iCur = parseInt(iCur.toFixed(2) * 100));
+                var iSpeed = (oAttr[property] - iCur) / 8;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                if (iCur != oAttr[property]) {
+                    bStop = false;
+                    _this.css(oElement, property, iCur + iSpeed);
+                } 
+            }
+            if (bStop) {
+                clearInterval(oElement.timer);
+                fnCallback && fnCallback.call(_this);   
+            }
+        }, 30);
+    }
+}
+window.onload = function () {
+    new Slider('index-banner', {effect: 'fade', trigger: 'click'});
+}
+</script>
+</body>
+</html>

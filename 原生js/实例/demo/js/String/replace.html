@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    function log(value) {
+        console.log(value);
+    }
+
+    var str = 'raimonfuns';
+    log(str.replace('funs', ''));
+    str = '1 plus 1 equal 2';
+    log(str.replace(/\d+/g, '$& dollar'));
+    str = 'hollo world! hollo world!';
+    log(str.replace('hollo', 'hello'));
+    log(str.replace(/hollo/g, 'hello'));
+    </script>
+</body>
+</html>

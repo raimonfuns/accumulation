@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+div {
+    height: 100px;
+    background: #0af;
+    opacity: 0.5;
+    margin: 5px;
+}
+.box1 {width: 100px;}
+.box2 {width: 200px;}
+</style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<script type="text/javascript" src="vQuery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        alert( $('div').css('width') );
+    });
+</script>
+</body>
+</html>

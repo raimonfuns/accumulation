@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822;}
+div{width: auto; height: 100px; background: #0af; opacity: 0.3; filter:alpha(opacity=30);}
+</style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+window.onload = function () {
+    var oDiv = document.getElementById('div1');
+    alert(getStyle(oDiv, 'width'));
+    alert(getStyle(oDiv, 'height'));
+    alert(getStyle(oDiv, 'opacity'));
+}
+// function getStyle(elem, style) {
+//     return 'getComputedStyle' in window ? getComputedStyle(elem, false)[style] : elem.currentStyle[style];
+// }
+
+// 兼容宽度和高度时auto的情况
+function getStyle(elem, style) {
+    return 'getComputedStyle' in window ? 
+    getComputedStyle(elem, false)[style] : 
+    (function(){
+        style = style.replace( /\-(\w)/g, function( $, $1 ){
+            return $1.toUpperCase();
+        });
+
+        var val =  elem.currentStyle[style];
+
+        if( val === 'auto' && (style === "width" || style === "height") ){
+            var rect =  elem.getBoundingClientRect();
+            if( style === "width" ){
+                return rect.right - rect.left + 'px';
+            }else{
+                return rect.bottom - rect.top + 'px';
+            }
+        }
+        return val;
+    })();
+}
+
+
+
+</script>
+</body>
+</html>

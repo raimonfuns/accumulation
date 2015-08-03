@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script type="text/javascript">
+var str = "apc bpc cpc dpc epc";
+var re = /[abc]pc/g;
+console.log('[]');
+console.log(str.match(re));
+
+// 范围
+var re = /[a-z]pc/g; 
+console.log('[a-z]');
+console.log(str.match(re));
+
+// 排除
+var re = /[^a]pc/g; 
+console.log('[^a]');
+console.log(str.match(re));
+</script>
+</head>
+<body>
+    
+</body>
+</html>

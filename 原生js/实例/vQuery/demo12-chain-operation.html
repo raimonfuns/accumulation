@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+div{width: 100px; height: 100px; background: #0af;}
+</style>
+<script type="text/javascript" src="vQuery.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('button').click(function () {
+        $('div').css('width', 200).css('height', 200).css('background', 'green');
+    }).hover(function () {
+        document.title = 'hover';
+    }, function () {
+        document.title = 'out';
+    });
+});
+</script>
+</head>
+<body>
+
+<button>变</button>
+<div></div>
+</body>
+</html>

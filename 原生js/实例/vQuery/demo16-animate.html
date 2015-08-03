@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+div{width: 100px; height: 100px; background: #0af; margin: 10px; opacity: 0.5; filter:alpha(opacity:50);}
+</style>
+<script type="text/javascript" src="vQuery.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('button').toggle(function () {
+        $('div').animate({width: 200, height: 200, opacity: 100});
+    }, function () {
+        $('div').animate({width: 100, height: 100, opacity: 50});
+    });
+});
+</script>
+</head>
+<body>
+<div></div>
+<button>运动</button>
+</body>
+</html>

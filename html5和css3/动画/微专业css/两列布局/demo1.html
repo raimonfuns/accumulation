@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>两列布局</title>
+<style type="text/css">
+body{margin: 0; padding: 0;}
+.parent:after{content: "."; clear: both; display: block; height: 0; visibility: hidden;}
+.parent{margin: 0 auto; width: 810px; *zoom: 1;}
+.side, .main{height: 200px; line-height: 200px; font-size: 20px; color: #fff;  text-align: center;}
+.side{float: left; width: 200px; background: #C00000;}
+.main{float: right; width: 600px; background: #4F81BD}
+</style>
+</head>
+<body>
+    <div class="parent"> 
+        <div class="side">侧栏</div>
+        <div class="main">主栏</div>
+    </div>
+</body>
+</html>

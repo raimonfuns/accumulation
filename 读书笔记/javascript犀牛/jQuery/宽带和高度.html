@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+	*{margin: 0; padding: 0;}
+	body{background: #272822; color: #7FE22E;}
+	.box{width: 100px; height: 100px; padding: 10px; margin: 10px; border: 10px solid #fff; background: #0af;}
+</style>
+</head>
+<body>
+<div class="box"></div>
+<script type="text/javascript" src="jquery.js"></script>	
+<script type="text/javascript">
+
+function log(value) {
+	console.log(value);
+}
+var $box = $('.box');
+
+log('*********** width() / height() ***********');
+log('width: ' + $box.width());
+log('height: ' + $box.height());
+
+log('*********** innerWidth() / innerHeight() ***********');
+log('innerWidth: ' + $box.innerWidth());
+log('innerHeight: ' + $box.innerHeight());
+
+log('*********** outerWidth() / outerHeight() ***********');
+log('outerWidth: ' + $box.outerWidth());
+log('outerHeight: ' + $box.outerHeight());
+
+// 根据以上数值可以求出padding、margin、border的大小,前提是这些属性的四个方向的大小是相同的
+// 所以，最简单的方法使用css方法来读这些属性，这里只是想说明，利用这些数值可以做这些事
+
+log('********************************* border-box() / content-box() *********************************');
+log('border-box')
+$box.css('box-sizing', 'border-box');
+
+log('*********** width() / height() ***********');
+log('width: ' + $box.width());
+log('height: ' + $box.height());
+
+log('*********** innerWidth() / innerHeight() ***********');
+log('innerWidth: ' + $box.innerWidth());
+log('innerHeight: ' + $box.innerHeight());
+
+log('*********** outerWidth() / outerHeight() ***********');
+log('outerWidth: ' + $box.outerWidth());
+log('outerHeight: ' + $box.outerHeight());
+</script>
+</body>
+</html>

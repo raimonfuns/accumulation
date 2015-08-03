@@ -1,0 +1,156 @@
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body, ul{margin: 0; padding: 0;}
+body{background: #272822;}
+li{width: 200px; position: absolute; top: 0; left: 0; z-index: 0; list-style: none;}
+
+#box{position:relative;width:754px;height:292px;margin:115px auto 0;}
+#box ul{position:relative;width:754px;height:292px;}
+#box li{position:absolute;border:2px solid #000;list-style:none;width:0;height:0;top:146px;left:377px;z-index:0;cursor:pointer;overflow:hidden;border-radius:3px; border: none;}
+#box li img{width:100%;height:100%;vertical-align:top;}
+#box .prev, #box .next{position:absolute;top:50%;width:39px;height:80px;margin-top:-40px;overflow:hidden;text-indent:-999px;cursor:pointer;background:url(../images/btn.png) no-repeat;}
+#box .prev{left:-60px;}
+#box .next{right:-60px;background-position:-39px 0;}
+
+
+.div1{background: #0af;}
+.div2{background: green;}
+.div3{background: yellow;}
+.div4{background: red;}
+.div5{background: #ccc;}
+.div6{background: #fff;}
+.div7{background: blue;}
+</style>
+</head>
+<body>
+
+<div id="box">
+    <input id="prev" type="button" value="左">
+    <input id="next" type="button" value="右">
+
+    <ul>
+        <li class="div1"></li>
+        <li class="div2"></li>
+        <li class="div3"></li>
+        <li class="div4"></li>
+        <li class="div5"></li>
+        <li class="div6"></li>
+        <li class="div7"></li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript" src="../../move.js"></script>
+<script type="text/javascript">
+//总结：绑定事件时，this的指向会发生改变，所以必须用变量保存this，然后传入事件函数里面
+
+
+function movePic(id) {
+    this.init(id);
+}
+movePic.prototype = {
+    init: function (id) {
+        var _this = this;
+        this.wrap = document.getElementById(id);
+        this.oUl = this.wrap.getElementsByTagName('ul')[0];
+        this.aLi = this.oUl.getElementsByTagName('li');
+        this.oPrev = this.wrap.getElementsByTagName('input')[0];
+        this.oNext = this.wrap.getElementsByTagName('input')[1];
+        this.arr = [];
+        this._doPrev = function () {return _this.doPrev.call(_this)};
+        this._doNext = function () {return _this.doNext.call(_this)};
+        this.options = [
+            {width:200, height:50, top:75, left:300, zIndex:1},
+            {width:200, height:100, top:50, left:150, zIndex:2},
+            {width:200, height:150, top:25, left:300, zIndex:3},
+            {width:200, height:200, top:0, left:450, zIndex:4},
+            {width:200, height:150, top:25, left:600, zIndex:3},
+            {width:200, height:100, top:50, left:750, zIndex:2},
+            {width:200, height:50, top:75, left:600, zIndex:1} 
+        ];
+        this.aSort = [];
+        
+        for (var i=0; i<this.aLi.length; i++) {
+            this.aSort[i] = this.aLi[i];
+        }
+        this.setUp();
+        this.addEvent(this.oPrev, 'click', this._doPrev);
+        this.addEvent(this.oNext, 'click', this._doNext);
+
+    },
+    doPrev: function () {
+        this.aSort.push(this.aSort.shift());
+        this.setUp();
+    },
+    doNext: function () {
+        this.aSort.unshift(this.aSort.pop());
+        this.setUp();
+    },
+    setUp: function () {
+        for (var i=0; i<this.aSort.length; i++) {
+            this.oUl.appendChild(this.aSort[i]);
+        }
+        for (var i=0; i<this.aSort.length; i++) {
+            this.doMove(this.aSort[i], this.options[i]);
+        }
+    },
+    addEvent: function (oElement, sEventType, fnHandle) {
+        oElement.addEventListener ? oElement.addEventListener(sEventType, fnHandle, false) : oElement.attachEvent('on' + sEventType, fnHandle);
+    },
+    css: function (oElement, attr, value) {
+        if (arguments.length === 2) {
+            return oElement.currentStyle ? oElement.currentStyle[attr] : getComputedStyle(oElement, false)[attr];
+        } else if (arguments.length === 3) {
+            switch(attr) {
+                case 'width':
+                case 'height':
+                case 'top':
+                case 'left':
+                case 'bottom':
+                    oElement.style[attr] = value + 'px';
+                    break;
+                case 'opacity':
+                    oElement.style.filter = 'alpha(opcity:' + value + ')';
+                    oElement.style.opacity = value / 100;
+                    break;
+                default:
+                    oElement.style[attr] = value;
+                    break;
+            }
+        }
+    },
+    doMove: function (oElement, oAttr, fnCallback) {
+        var _this = this;
+        clearInterval(oElement.timer);
+        oElement.timer = setInterval(function () {
+            var bStop = true;
+            for (var property in oAttr) {
+                var iCur = parseFloat(_this.css(oElement, property));
+                property === 'opacity' && (iCur = parseInt(iCur.toFixed(2) * 100));
+                var iSpeed = (oAttr[property] - iCur) / 5;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                if (iCur != oAttr[property]) {
+                    bStop = false;
+                    _this.css(oElement, property, iCur + iSpeed);
+                } 
+            }
+            if (bStop) {
+                clearInterval(oElement.timer);
+                fnCallback && fnCallback.apply(this, arguments);   
+            }
+        }, 30);
+    }
+}
+
+window.onload = function () {
+    new movePic('box');
+}
+</script>
+</body>
+</html>

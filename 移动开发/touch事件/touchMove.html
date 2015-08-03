@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+html,body{height: 100%; margin: 0; padding: 0; background: #272822}
+#canvas{position: relative; width: 100%; height: 100%; background: #ccc}
+.spirit{position: absolute;width: 50px;height: 50px;background-color: #0af;} /* 方块的class名称*/
+</style>
+</head>
+<body>
+
+<div id="canvas"></div>
+
+<script type="text/javascript">
+window.onload = function () {
+
+    var canvas = document.getElementById('canvas'),
+        spirit, startX, startY;
+
+    function touchStart(event) {
+        // console.log(event.touches);
+        event.preventDefault();
+        if (spirit || !event.touches.length) return;
+        var touch = event.touches[0];
+        startX = touch.pageX;
+        startY = touch.pageY;
+        spirit = document.createElement('div');
+        spirit.className = 'spirit';
+        spirit.style.left = startX + 'px';
+        spirit.style.top = startY + 'px';
+        canvas.appendChild(spirit);
+    }
+
+    function touchMove(event) {
+        event.preventDefault();
+        if (!spirit || !event.touches.length) return;
+        var touch = event.touches[0];
+            x = touch.pageX - startX;
+            y = touch.pageY - startY;
+        spirit.style.webkitTransform = 'translate(' + x + 'px,' + y + 'px)';
+    }
+
+    canvas.addEventListener("touchstart", touchStart, false);
+    canvas.addEventListener("touchmove", touchMove, false);
+}
+</script>
+</body>
+</html>

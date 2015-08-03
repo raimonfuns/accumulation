@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    function setCookie(name, value, iDay) {
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDay);
+        document.cookie = name + '=' + value + ';expires=' + oDate;
+    }
+    setCookie('user', 'raimon', 365);
+    setCookie('password', '123123', 7);
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

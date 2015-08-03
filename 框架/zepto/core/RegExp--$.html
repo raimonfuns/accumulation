@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">body{background: #272822;}</style>
+<script type="text/javascript" src="zepto_core.js"></script>
+<script type="text/javascript">
+var reg1 = /^(a)(b)c(d)$/;
+var reg2 = /^ab(c)d$/;
+reg1.test('abcd');
+console.log(RegExp.$1); // a
+console.log(RegExp.$2); // b
+console.log(RegExp.$3); // c
+reg2.test('abcd');
+console.log('--------')
+console.log(RegExp.$1); // c
+console.log(RegExp.$2); // 
+console.log(RegExp.$3); // 
+</script>
+</head>
+<body>	
+</body>
+</html>

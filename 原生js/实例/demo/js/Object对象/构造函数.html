@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background: #272822;">
+<script type="text/javascript">
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.move = function (x, y) {
+        this.x += x;
+        this.y += y;
+    }
+    function Circle(x, y, r) {
+        Point.apply(this, [x, y]);
+        this.radius = r;
+    }
+    Circle.prototype = Object.create(Point.prototype);
+    console.log(new Circle(1, 2, 3));
+</script>
+</body>
+</html>

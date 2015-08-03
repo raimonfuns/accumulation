@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>zepto core</title>
+<style type="text/css">body{background: #272822; color: #7FE22E;}</style>
+</head>
+<body>
+	<div id="test1">$.event</div>
+<script type="text/javascript" src="../core/zepto_core.js"></script>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+
+// $.event
+$.Event('myEvent');
+$('#test1').on('myEvent', function (e) {
+	console.log(e.target);
+});
+$('#test1').trigger('myEvent');
+
+
+function a() {
+	console.log('name: ' + this.name + ' / age: ' + this.age);
+}
+var info = {
+	name: 'raimon', 
+	age: '24'
+};
+// a.call({name: 'raimon', age: '24'});
+$.proxy(a, info)();
+</script>
+</body>
+</html>

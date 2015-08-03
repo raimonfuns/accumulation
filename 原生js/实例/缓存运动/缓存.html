@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body{margin: 0; background: #272822;}
+    div{width: 100px; height: 100px; background: #0af; position: absolute; top: 50px; left: 600px;}
+    .line1{width: 1px; height: 300px; background: #0af; position: absolute; top: 0; left: 300px;}
+    </style>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+    var timer = null;
+    function move(iTarget) {
+        var oDiv = document.getElementById('div');
+        var speed = 0;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            speed = (iTarget - oDiv.offsetLeft)/10;
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            document.title = speed;
+            if (oDiv.offsetLeft === iTarget) {
+                clearInterval(timer);
+            } else {
+                oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+            }
+        }, 30);
+    }
+    </script>
+
+    <button onclick="move(300);">300</button>
+    <div id="div"></div>
+    <div class="line1"></div>
+</body>
+</html>

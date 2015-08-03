@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{margin: 0; padding: 0;}
+body{height: 100%;}
+.page{height: 100%; position: absolute; top: 0; left: 0; z-index: 99;}
+.current{width: 100%; background: #4d7aff;}
+.sidebar{width: 80%; background: #00b22d;}
+.sidebar.show + .current{transition: 400ms; transform: translate3d(80%, 0, 0);}
+.sidebar.hide + .current{transition: 400ms; transform: translate3d(0, 0, 0);}
+</style>
+</head>
+<body>
+    <div id="sidebar" class="page sidebar"></div>
+    <div class="page current"></div>
+<script type="text/javascript">
+    window.onload = function () {
+        var oSidebar = document.getElementById('sidebar');
+        setTimeout(function () {
+            oSidebar.className = 'page sidebar show';
+        }, 1000);
+        setTimeout(function () {
+            oSidebar.className = 'page sidebar hide';
+        }, 2000);
+    }
+</script>
+</body>
+</html>

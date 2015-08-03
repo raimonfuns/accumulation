@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html>
+<head>
+<title>css3d test</title>
+<meta charset="utf-8">
+<style type="text/css">
+body{background:#000;margin:0;padding:0;-webkit-perspective:8000px;}
+@-webkit-keyframes spin{
+    0%{-webkit-transform:rotateY(0deg) rotateX(0deg);}
+    100%{-webkit-transform:rotateY(-360deg) rotateX(360deg);}
+}
+@-webkit-keyframes spin2{
+    0%{-webkit-transform:rotateY(0deg) rotateX(0deg);}
+    100%{-webkit-transform:rotateY(-360deg) rotateX(360deg);}
+}
+.cube2d{position:absolute;cursor:pointer;transition:-webkit-transform 1s ease-in;}
+.cube2d > div{position:absolute;width:100px;height:100px;text-align:center;line-height:100px;}
+.cube2d_top{background: #9acc53;-webkit-transform: rotate(-45deg) skew(15deg, 15deg);}
+.cube2d_left{background: #8ec63f;-webkit-transform: rotate(15deg) skew(15deg, 15deg) translate(-50%, 100%);}
+.cube2d_right{background: #80b239;-webkit-transform: rotate(-15deg) skew(-15deg, -15deg) translate(50%, 100%);}
+.cube2d1{left:490px;top:149px;}
+.cube2d2{left:400px;top:200px;}
+.cube2d2:hover{-webkit-transform:translateX(-100px)}
+.cube2d3{left:579px;top:200px;}
+.cube2d3:hover{-webkit-transform:translateX(100px)}
+.cube2d4{left:490px;top:45px;}
+.cube2d4:hover{-webkit-transform:translateY(-100px)}
+.cube3d{width:100px;height:100px;-webkit-transform-style:preserve-3d;position:absolute;-webkit-animation:spin 2s linear infinite,spin2 3s ease-out infinite;-webkit-animation-play-state:running;cursor:pointer;}
+.cube3d:hover{-webkit-animation-play-state:paused;}
+.cube3d > div{width:100px;height:100px;color:#fff;font-size:30px;text-align:center;line-height:100px;left:0;top:0;position:absolute;}
+.cube3d > div > div{height:100%;}
+.cube3d_top{background:#666;-webkit-transform:rotateX(90deg) translateZ(50px)}
+.cube3d_bottom{background:red;-webkit-transform:rotateX(-90deg) translateZ(50px)}
+.cube3d_left{background:blue;-webkit-transform:rotateY(-90deg) translateZ(50px)}
+.cube3d_right{background:green;-webkit-transform:rotateY(90deg) translateZ(50px)}
+.cube3d_front{background:url("img/a.jpg");-webkit-transform:translateZ(50px)}
+.cube3d_back{background:url("img/b.jpg");-webkit-transform:rotateX(180deg) translateZ(50px)}
+.wrapper3d{width:600px;height:200px;margin:300px auto 0;-webkit-transform-style:preserve-3d;-webkit-transform:rotateY(15deg)}
+.cube3d1Wrapper,.cube3d2Wrapper,.cube3d3Wrapper{left:50%;top:200px;margin-left:-50px;}
+.cube3d1Wrapper{-webkit-transform:translate3d(-300px,0,150px)}
+.cube3d2Wrapper{-webkit-transform:translate3d(300px,0,150px)}
+.cube3d3Wrapper{-webkit-transform:translate3d(0,0,-150px)}
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="cube2d cube2d1">
+        <div class="cube2d_top">顶部</div>
+        <div class="cube2d_left">左边</div>
+        <div class="cube2d_right">右边</div>
+    </div>
+    <div class="cube2d cube2d2">
+        <div class="cube2d_top">顶部</div>
+        <div class="cube2d_left">左边</div>
+        <div class="cube2d_right">右边</div>
+    </div>
+    <div class="cube2d cube2d3">
+        <div class="cube2d_top">顶部</div>
+        <div class="cube2d_left">左边</div>
+        <div class="cube2d_right">右边</div>
+    </div>
+    <div class="cube2d cube2d4">
+        <div class="cube2d_top">顶部</div>
+        <div class="cube2d_left">左边</div>
+        <div class="cube2d_right">右边</div>
+    </div>
+    <div class="wrapper3d">
+        <div class="cube3d1Wrapper">
+            <div class="cube3d cube3d1">
+                <div class="cube3d_top">1</div>
+                <div class="cube3d_bottom">2</div>
+                <div class="cube3d_left">3</div>
+                <div class="cube3d_right">4</div>
+                <div class="cube3d_front"></div>
+                <div class="cube3d_back"></div>
+            </div>
+        </div>
+        <div class="cube3d2Wrapper">
+            <div class="cube3d cube3d2">
+                <div class="cube3d_top">1</div>
+                <div class="cube3d_bottom">2</div>
+                <div class="cube3d_left">3</div>
+                <div class="cube3d_right">4</div>
+                <div class="cube3d_front"></div>
+                <div class="cube3d_back"></div>
+            </div>
+        </div>
+        <div class="cube3d3Wrapper">
+            <div class="cube3d cube3d3">
+                <div class="cube3d_top">1</div>
+                <div class="cube3d_bottom">2</div>
+                <div class="cube3d_left">3</div>
+                <div class="cube3d_right">4</div>
+                <div class="cube3d_front"></div>
+                <div class="cube3d_back"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

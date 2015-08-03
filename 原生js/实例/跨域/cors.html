@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function ajax(options) {
+    var xhr = null;
+    var options = options || {};
+    options.type = options.type || 'post';
+    options.data = options.data || {};
+    options.async = options.async || true;
+
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject();
+    }
+
+    var type = options.type.toLowerCase();
+    if (type === 'get') {
+        xhr.open(options.type, options.url + '?' + processData(options.data) , options.async);
+        xhr.send();
+    } else if (type === 'post') {
+        xhr.open(options.type, options.url, options.async);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(processData(options.data));
+    }    
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                options.success(xhr.responseText);
+            } else {
+                if (options.fail) {
+                    options.fail(xhr.responseText);
+                }
+            }
+        }
+    }
+
+    function processData(data) {
+        var aData = [];
+        var sData = '';
+        if (typeof data === 'object') {
+            for (var i in data) {
+                if (data.hasOwnProperty(i)) {
+                    aData.push(i + '=' + data[i]);
+                }
+            }
+        }
+        sData = aData.join('&');
+        return sData;
+    }
+}
+</script>    
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE>  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+    	div,body{margin: 0; padding: 0}
+    	body{background: #272822; color: #A6E22E; font-size: 14px; padding: 20px;}
+        h3{padding-left: 20px;}
+        .div{
+            width: 200px; 
+            height: 200px; 
+            background: #0af; 
+            margin: 80px auto;
+            -webkit-transform: skew(-10deg);
+            -moz-transform: skew(-10deg);
+            -o-transform: skew(-10deg);
+            -ms-transform: skew(-10deg);
+            border: 1px solid #ccc;
+            border:4px solid #ccc;
+            display: none;
+            border:4px solid #ccc;
+            border: 3px solid #ccc;
+            background: #0af;
+            border-bottom: 1px solid #0af;
+        }
+
+        @media screen and (max-width: 760px) {
+            #main{position: relative;}
+            #main header{padding: 3.5em 0 0.5em;}
+            nav{position: absolute; top: 0; left: 0;}
+            nav span{float: left;}
+            nav span a{padding: 0.7em 1.7em;}
+            nav span p{margin: 5px;}
+            nav span a{line-height: 22px;}
+        }
+    </style>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            function initCanvas(canvasId){
+                var canvas = document.getElementById(canvasId);
+                // canvas.width = 400;
+                // canvas.height = 100;
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext('2d');
+                    return ctx;
+                }
+            }
+
+            //线段
+            var lineCtx = initCanvas('line');
+            lineCtx.beginPath();
+            lineCtx.moveTo(0, 0);
+            lineCtx.lineTo(200, 100);
+            lineCtx.lineWidth = 1.0;
+            lineCtx.strokeStyle = "#0af";
+            lineCtx.stroke();     
+
+            //矩形
+            var RectCtx = initCanvas('Rect');
+            //实心
+            RectCtx.fillStyle = "#0af";  
+            RectCtx.fillRect(10, 10, 80, 90);  
+            //空心 
+            RectCtx.strokeStyle = "#0af";   
+            RectCtx.strokeRect(110, 10, 80, 90);
+            RectCtx.fillRect(210, 10, 80, 90);
+            //清除
+            RectCtx.clearRect(210, 10, 40, 45);
+            RectCtx.clearRect(250, 55, 40, 45);
+
+            //文本
+            var textCtx = initCanvas('text');
+            textCtx.font = "Bold 20px Arial";
+            textCtx.textAlign = "left";
+            textCtx.fillStyle = "#0af";
+            //实心
+            textCtx.fillText("raimonfuns", 20, 40);
+            //空心
+            textCtx.strokeText("raimonfuns", 20, 80);  
+
+            //圆
+            var arcCtx = initCanvas('arc');
+            //实心
+            arcCtx.beginPath();
+            arcCtx.arc(40, 50, 40, 0, Math.PI*2, true);
+            arcCtx.fillStyle = "#0af";
+            arcCtx.fill();  
+            //空心
+            arcCtx.beginPath();
+            arcCtx.arc(140, 50, 40, 0, Math.PI*2, true);
+            arcCtx.lineWidth = 1.0;
+            arcCtx.strokeStyle = "#0af";
+            arcCtx.stroke();
+
+            var gradientCtx = initCanvas('gradient');
+            var vGradient = gradientCtx.createLinearGradient(0, 0, 0, 50);  //垂直方向
+            var hGradient = gradientCtx.createLinearGradient(0, 0, 100, 0);  //水平方向
+            var dGradient = gradientCtx.createLinearGradient(0, 0, 100, 50);  //对角线方向
+            vGradient.addColorStop(0,"#000"); 
+            vGradient.addColorStop(1,"#999");
+            hGradient.addColorStop(0,"#000"); 
+            hGradient.addColorStop(1,"#999");
+            dGradient.addColorStop(0,"#000"); 
+            dGradient.addColorStop(1,"#999");
+            gradientCtx.fillStyle = vGradient;
+            gradientCtx.fillRect(0, 0, 100, 50);
+            gradientCtx.fillStyle = hGradient;
+            gradientCtx.fillRect(0, 60, 100, 50);
+            gradientCtx.fillStyle = dGradient;
+            gradientCtx.fillRect(0, 120, 100, 50);
+        });
+
+        $(".all-games-tab").click();
+        var game_style_handler;
+        $('.all-games-tab a').hover(function(){
+            var i = $('.all-games-tab a').index(this);
+            game_style_handler = setTimeout(function(){
+                    $('.all-games-tab a').removeClass('action').eq(i).addClass('action');
+                    $('.all-games-content ul').hide().eq(i).show();
+                },100);
+            },function(){
+                clearTimeout(game_style_handler);
+            }
+        );
+    
+        var undefined = "raimonfuns";
+
+        function foo(a,undefined){
+            // console.log(a,b);
+            console.log(undefined);
+        }
+
+        foo("raimonfuns");
+
+        var foo = function (){
+            console.log("express");
+        }();
+
+        (function (){
+            console.log("alarm");
+        })();
+
+        $(function (){
+            $("#btn").click(function (){
+                var value = $("input").val().trim();
+                console.log(value);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>线段</h2>
+    <canvas id="line" width="300" height="100"></canvas>
+    <h2>矩形</h2>
+    <canvas id="Rect" width="300" height="100"></canvas>
+    <h2>文本</h2>
+    <canvas id="text" width="300" height="100"></canvas>
+    <h2>圆</h2>
+    <canvas id="arc" width="300" height="100"></canvas>
+    <h2>渐变</h2>
+    <canvas id="gradient" width="400" height="440"></canvas>
+</body>
+</html>

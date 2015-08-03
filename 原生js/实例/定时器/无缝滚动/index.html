@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>无缝滚动</title>
+<style type="text/css">
+body{text-align: center;}
+body, ul{margin: 0; padding: 0;}
+li{list-style: none;}
+h2{font-size: 30px;}
+div{width: 960px; height: 120px; position: relative; margin: 50px auto 50px; overflow: hidden;}
+ul{position: absolute; top: 0; left: 0;}
+li{float: left; width: 100px; padding: 10px;}
+li img{width: 100px; height: 100px; border: none; }
+span{padding: 8px; background: #0af; cursor: pointer; border-radius: 3px; color: #fff;}
+</style>
+</head>
+<body>
+<h2>无缝滚动</h2>
+<div id="box">
+    <ul>
+        <li><img src="images/1.jpg"></li>
+        <li><img src="images/2.png"></li>
+        <li><img src="images/3.jpg"></li>
+        <li><img src="images/4.jpg"></li>
+        <li><img src="images/5.png"></li>
+        <li><img src="images/6.png"></li>
+        <li><img src="images/7.png"></li>
+        <li><img src="images/8.jpg"></li>
+    </ul>
+</div>
+<span class="DiretionBtn">改变方向</span>
+<script type="text/javascript">
+window.onload = function () {
+    var oDiv = document.getElementById('box');
+    var oUl = oDiv.getElementsByTagName('ul')[0];
+    var aLi = oUl.getElementsByTagName('li');
+    var oDiretionBtn = document.getElementsByTagName('span')[0];
+    var timer = null;
+    var speed = 2;
+
+    oUl.innerHTML += oUl.innerHTML;
+    oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px'; // aLi.length是动态的，所以现在是10
+
+    function move() {
+        if (oUl.offsetLeft < -oUl.offsetWidth/2) {
+            oUl.style.left = 0;
+        }
+        if (oUl.offsetLeft > 0) {
+            oUl.style.left = -oUl.offsetWidth/2 + 'px';
+        }
+        oUl.style.left = oUl.offsetLeft + speed + 'px';
+    }
+
+    move();
+
+    timer = setInterval(move, 30);
+    oDiv.onmouseover = function () {
+        clearInterval(timer);
+    }
+    oDiv.onmouseout = function () {
+        timer = setInterval(move, 30);
+    }
+
+    oDiretionBtn.onclick = function () {
+        speed = -speed;
+    }
+
+}
+</script>
+</body>
+</html>

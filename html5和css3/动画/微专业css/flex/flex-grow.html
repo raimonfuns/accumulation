@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body, ul, h1, h2{margin: 0; padding: 0;}
+    body{background: #272822; color: #fff;}
+    h1{text-align: center; font-size: 40px; line-height: 150px; color: #0af;}
+    ul{margin-left: 60px;}
+    .wrap{margin: 20px 40px;}
+    .tip{line-height: 50px;}
+    .container{margin: 40px 0; line-height: 40px; font-size: 20px; background: #000;}
+    .item{margin: 10px; line-height: 40px; background: #0af; text-align: center;}
+    
+    .container{display: flex;}
+    .item2{flex-basis: 200px;}
+    .container2 .item2,
+    .container3 .item2,
+    .container4 .item2{flex-grow: 1;}
+    .container3 .item3,
+    .container4 .item3{flex-grow: 2;}
+    .container4 .item2,
+    .container4 .item3{flex-basis: 0;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>flex-grow</h1>
+        <div class="container container1">
+            <div class="item item1">1</div>
+            <div class="item item2">2</div>
+            <div class="item item3">3</div>
+        </div>
+        <div class="container container2">
+            <div class="item item1">1</div>
+            <div class="item item2">2</div>
+            <div class="item item3">3</div>
+        </div>
+        <div class="container container3">
+            <div class="item item1">1</div>
+            <div class="item item2">2</div>
+            <div class="item item3">3</div>
+        </div>
+        <div class="container container4">
+            <div class="item item1">1</div>
+            <div class="item item2">2</div>
+            <div class="item item3">3</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script type="text/javascript">
+    window.onload = function () {
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function () {
+            var width = 500;
+            var height = 500;
+            var top = (window.screen.availHeight - 30 - height)/2;
+            var left = (window.screen.availWidth - 10 - width)/2;
+            window.open('','', 'width='+ width + ', height='+ height + ', top= '+ top + ', left='+ left);
+        }
+    }
+        
+</script>
+</head>
+<body>
+<button id="btn">打开新窗口</button>
+</body>
+</html>

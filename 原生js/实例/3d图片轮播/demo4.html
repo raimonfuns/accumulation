@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822;}
+div{width: 100px; height: 100px; position: absolute; top: 50px;}
+.div1{background: #0af; left: 0; z-index: 1;}
+.div2{background: green; left: 150px; top: 30px; z-index: 2;}
+.div3{background: yellow; left: 300px; z-index: 1;}
+</style>
+</head>
+<body>
+
+<input id="leftBtn" type="button" value="左">
+<input id="rightBtn" type="button" value="右">
+
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+
+<script type="text/javascript" src="../move.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+    var aDiv = document.getElementsByTagName('div');
+    var oLeftBtn = document.getElementById('leftBtn');
+    var oRightBtn = document.getElementById('rightBtn');
+    var arr = [];
+    
+    for (var i=0; i<aDiv.length; i++) {
+        arr.push( [parseInt(getStyle(aDiv[i], 'left')), parseInt(getStyle(aDiv[i], 'top')), parseInt(getStyle(aDiv[i], 'zIndex'))] );
+    }
+
+    oLeftBtn.onclick = function () {
+        arr.push(arr[0]);
+        arr.shift();
+
+        for (var i=0; i<aDiv.length; i++) {
+            aDiv[i].style.zIndex = arr[i][2];
+            startMove(aDiv[i], {left: arr[i][0], top: arr[i][1]});
+        }
+    }
+
+    oRightBtn.onclick = function () {
+        arr.unshift(arr[arr.length-1]);
+        arr.pop();
+
+        for (var i=0; i<aDiv.length; i++) {
+            aDiv[i].style.zIndex = arr[i][2];
+            startMove(aDiv[i], {left: arr[i][0], top: arr[i][1]});
+        }
+    }
+}
+function getStyle(obj, attr) {
+    if (obj.currentStyle) {
+        return obj.currentStyle[attr];
+    } else {
+        return getComputedStyle(obj, false)[attr];
+    }
+}
+</script>
+</body>
+</html>

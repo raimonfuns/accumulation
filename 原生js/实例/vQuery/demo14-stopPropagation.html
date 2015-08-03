@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+div{padding: 50px;}
+</style>
+<script type="text/javascript" src="vQuery.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('div').bind('click', function () {
+        alert($(this).css('background'));
+        return false;
+    });
+});
+</script>
+</head>
+<body>
+<div style="background:red;">
+    <div style="background:green;">
+        <div style="background:gray;"></div>
+    </div>
+</div>
+</body>
+</html>

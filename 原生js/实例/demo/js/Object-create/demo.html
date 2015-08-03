@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body style="background: #272822">
+
+<script type="text/javascript">
+if (typeof Object.create != 'function') {
+    Object.create = (function () {
+        var F = function () {}
+        return function (proto) {
+            F.prototype = proto;
+            return new F();
+        }
+    })();
+}
+var a = Object.create({x: 1, y: 2});
+alert(a.x); // 1
+alert(a.y); // 2
+</script>
+</body>
+</html>

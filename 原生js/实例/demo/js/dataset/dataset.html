@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="user" data-id="123" data-account-name="raimonfuns" data-name="raimon" data-email="123@163.com"></div>
+
+<script type="text/javascript">
+window.onload = function () {   
+var oUser = document.getElementById('user');
+function getDataset(element) {
+    if (element.dataset) {
+        return element.dataset;
+    } else {
+        var arr = element.outerHTML.replace(/"/g, '').split(/ |>/); // 去掉属性值的双引号，以空格或者>切割字符串
+        var aDataAttr = [];
+        var i = 0;
+        for (; i < arr.length; i++) {
+            if (/^data-/.test(arr[i])) { // 储存前缀为data-的项
+                aDataAttr.push(arr[i].substring(5));
+            }
+        }
+        var aTemp = [];
+        var oDataset = {}; 
+        for (i = 0; i < aDataAttr.length; i++) {
+            aTemp = aDataAttr[i].split('=');
+            var sKey = aTemp[0].replace(/\-([a-zA-Z])/g, function ($, $1) { // account-name  -> accountName
+                return $1.toUpperCase();
+            });
+            oDataset[sKey] = aTemp[1];
+        }
+        return oDataset;
+    }    
+}
+var dataset = getDataset(oUser);
+alert(dataset.id); // user
+alert(dataset.accountName); // raimonfuns
+alert(dataset.name); // raimon
+alert(dataset.email); // 123@163.com
+}
+</script>
+</body>
+</html>

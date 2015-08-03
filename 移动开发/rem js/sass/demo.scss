@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "compass/reset";
+
+$ppr: 750px/16/1rem; // pixel per rem
+
+body{
+	background: #272822;
+}
+.box {
+	width: 750px/$ppr;
+	height: 100px;
+	background: #0af;
+}

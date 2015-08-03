@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background: #272822;">
+
+<input id="txt" type="text">
+
+<script type="text/javascript">
+window.onload = function () {
+    var oTxt = document.getElementById('txt');
+
+    oTxt.onkeydown = function (ev) {
+        var oEvent = ev || event;
+        var keyCode = oEvent.keyCode;
+        document.title = keyCode;
+        if ( !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 37 || keyCode == 39 || keyCode == 116) ) {
+            return false;
+        }
+    }
+}    
+</script>
+
+</body>
+</html>

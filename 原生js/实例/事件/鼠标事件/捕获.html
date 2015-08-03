@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body{margin: 0; padding: 0; background: #272822; color: #fff;}
+    #div{width: 100px; height: 100px; background: #0af; position: absolute; top: 0; left: 0; cursor: move;}
+    </style>
+</head>
+<body>
+
+raimonfuns<br>
+raimonfuns
+<div id="div">raimonfuns</div>raimonfuns
+raimonfuns<br>
+raimonfuns
+
+<script type="text/javascript">
+function getPos(oEvent) {
+    var scrollLeft = document.documentElement.scrollLeft + document.body.scrollLeft;
+    var scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
+
+    return {
+        x: oEvent.clientX + scrollLeft,
+        y: oEvent.clientY + scrollTop
+    };
+}
+
+window.onload = function () {
+    var oDiv = document.getElementById('div');
+    var disX = 0;
+    var disY = 0;
+
+    oDiv.onmousedown = function (ev) {
+        var oEvent = ev || event;
+
+        disX = getPos(oEvent).x - this.offsetLeft;
+        disY = getPos(oEvent).y - this.offsetTop;
+
+        if (oDiv.setCapture) {
+            // IE
+            oDiv.onmousemove = mouseMove;
+
+            oDiv.onmouseup = mouseUp;
+
+            oDiv.setCapture();
+        } else {
+            // Chrome,FF
+            document.onmousemove = mouseMove;
+
+            document.onmouseup = mouseUp;
+        }
+
+        function mouseMove(ev) {
+            var oEvent = ev || event;
+            
+            var l = getPos(oEvent).x - disX;
+            var t = getPos(oEvent).y - disY;
+
+            oDiv.style.left = l + 'px';
+            oDiv.style.top = t + 'px';
+        }
+
+        function mouseUp() {
+            this.onmouseup = null;
+            this.onmousemove = null;
+
+            if (oDiv.releaseCapture) {
+                oDiv.releaseCapture();
+            }
+        }
+
+        return false;
+
+    }
+
+
+}
+</script>
+
+</body>
+</html>

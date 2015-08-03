@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script type="text/javascript">
+    window.onload = function () {
+        document.onclick = function () {
+            // IE、FF:
+            // document.documentElement.scrollTop
+            // Chrome:
+            // document.body.scrollTop
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            alert(scrollTop);
+        }
+    }
+</script>
+</head>
+<body style="height: 2000px;">
+
+</body>
+</html>

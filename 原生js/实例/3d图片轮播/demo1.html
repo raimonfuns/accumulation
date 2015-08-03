@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="div1">1,2,3,4</div>
+<input id="leftBtn" type="button" value="左">
+<input id="rightBtn" type="button" value="右">
+
+<script type="text/javascript">
+window.onload = function () {
+    var oDiv = document.getElementById('div1');
+    var oLeftBtn = document.getElementById('leftBtn');
+    var oRightBtn = document.getElementById('rightBtn');
+
+    oLeftBtn.onclick = function () {
+        var str = oDiv.innerHTML;
+        var arr = str.split(',');
+
+        arr.push(arr[0]);
+        arr.shift();
+        oDiv.innerHTML = arr;
+    }
+
+    oRightBtn.onclick = function () {
+        var str = oDiv.innerHTML;
+        var arr = str.split(',');
+
+        arr.unshift(arr[arr.length-1]);
+        arr.pop();
+        oDiv.innerHTML = arr;
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+.overlayCode {background: rgba(0, 0, 0, 0.8);bottom: 0;display: none;left: 0;position: fixed;right: 0;top: 0;}
+.box-wrap {background: #fff;bottom: 0;display: none;height: 100px;left: 0;margin: 0 auto;position: absolute;right: 0;top: 0;width: 330px;z-index: 10;}
+.submit-ok {color: #272822;display: none;font-size: 16px;padding: 36px;text-align: center;}
+.box-content {padding-top: 20px;text-align: center;}
+.inputData {margin: 0 6px;padding: 4px;width: 86px;}
+.alert-submit {background: #fe8918;color: #fff;cursor: pointer;margin: 10px auto 0;padding: 5px;width: 60px;}
+</style>
+</head>
+<body>
+    <a id="get-verify-btn" class="btn-2 get-verify-btn" href="javascript:">点击获取短信验证码</a>
+    <div id="box-wrap" class="box-wrap">
+            <div class="box-content">
+                <font color="#272822">请输入目录名称: </font>
+                <input type="text" id="inputData" class="inputData" size="15" />
+                <p class="alert-submit" id="alert-submit">确定</p> 
+            </div>
+        <p class="submit-ok">发送成功!</p>
+    </div>
+    <div class="overlayCode"></div>
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+var wait = 60;
+$('.get-verify-btn').click(function(){
+    $('#phone_account').trigger('blur');
+        if(!$('#phone_account').next('.tip').hasClass('error') && wait === 60){
+            if (getCookie("coldTime") != null) {
+                alert("点击频繁，请稍候...");
+            } else {
+                $('.overlayCode').fadeIn(200);
+                $('.box-wrap').css( 'top', $(document).scrollTop() + $(window).height()/2 - 100 ).fadeIn(200);
+                $('#inputData').val("");
+                set_random_code();
+                disable_scroll();
+            }
+    }
+});
+
+function set_random_code() {
+    //Generates the captcha function
+    var a = Math.ceil(Math.random() * 9)+ '';
+    var b = Math.ceil(Math.random() * 9)+ '';
+    var c = Math.ceil(Math.random() * 9)+ '';
+    var d = Math.ceil(Math.random() * 9)+ '';
+    var e = Math.ceil(Math.random() * 9)+ '';
+    var f = Math.ceil(Math.random() * 9)+ '';
+
+    var code = a + b + c + d + e + f;
+    $("#txtCaptchaDiv").html(code);
+    // console.log('here');
+}
+
+$('#txtCaptchaDiv').click(function () {
+    set_random_code();
+});
+
+$('#alert-submit').click(function () {
+    check_code();
+});
+
+function check_code() {
+    if ( $("#txtCaptchaDiv").html() ===  $('#inputData').val().trim() ) {
+        $('.box-content').hide();
+        $('.submit-ok').show();
+        $('.box-wrap').css('height', 100);
+        setTimeout("$('.overlayCode').trigger('click')", 1000);
+        time($('.get-verify-btn').get(0));
+        $.post(
+            window.PAY_BASE + '/common/sms.do', 
+            {
+                'mobilephone': $('#phone_account').val().trim()
+            },
+            function (data) {
+                // console.log(data);
+            }
+        );
+        // console.log(window.PAY_BASE);
+        setCookie("coldTime", true , 120*1000);
+    } else {
+        $('.alert-error').show();
+        $('.box-wrap').css('height', 155);
+    }
+}
+
+$('#inputData').keypress(function (event) {
+    if (event.which === 13) {
+        check_code();
+    }
+});
+
+
+function time(o) {
+    if (wait === 0) {
+        o.removeAttribute("disabled");           
+        o.innerHTML = "点击获取短信验证码";
+        o.className = "btn-2 get-verify-btn";
+        wait = 60;
+    } else {
+        o.setAttribute("disabled", true);
+        o.innerHTML = wait + "秒后可以重新发送";
+        o.className = "btn-2 get-verify-btn sending";
+        wait--;
+        setTimeout(function() {
+            time(o)
+        },
+        1000)
+    }
+}
+
+function setCookie(name, val, ex){
+    var times = new Date();
+    times.setTime(times.getTime() + ex);
+    if(ex == 0){
+        document.cookie = name+"="+val+";";
+    }else{
+        document.cookie = name+"="+val+"; expires="+times.toGMTString();
+    }
+}
+
+function getCookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));   
+    if(arr != null) return unescape(arr[2]); return null;
+}
+
+$('.overlayCode').on('click',function(){
+    $('.overlayCode,.box-wrap').fadeOut(200,function(){
+        $(this).removeAttr('style');
+        $('.box-content').show();
+        $('.submit-ok').hide();
+        $('.alert-error').hide();
+        enable_scroll();
+    });
+});
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = [37, 38, 39, 40];
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;  
+}
+
+function keydown(e) {
+    for (var i = keys.length; i--;) {
+        if (e.keyCode === keys[i]) {
+            preventDefault(e);
+            return;
+        }
+    }
+}
+
+function wheel(e) {
+  preventDefault(e);
+}
+
+function disable_scroll() {
+  if (window.addEventListener) {
+      window.addEventListener('DOMMouseScroll', wheel, false);
+  }
+  window.onmousewheel = document.onmousewheel = wheel;
+  document.onkeydown = keydown;
+}
+
+function enable_scroll() {
+    if (window.removeEventListener) {
+        window.removeEventListener('DOMMouseScroll', wheel, false);
+    }
+    window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
+}
+</script>    
+</body>
+</html>

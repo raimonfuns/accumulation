@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script type="text/javascript">
+window.onload = function () {
+    var oTxt = document.getElementById('txt1');
+    var oBtn = document.getElementById('btn');
+
+    oBtn.onclick = function () {
+        var re = /^\w+@[a-z0-9]+\.[a-z]+$/i;
+        if (re.test(oTxt.value)) {
+            alert('合法的邮箱');
+        } else {
+            alert('写错了');
+        }
+    }
+}
+</script>
+</head>
+<body>
+<input id="txt1">
+<button id="btn">校验</button>
+</body>
+</html>

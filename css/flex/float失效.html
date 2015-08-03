@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>flex使子元素float失效</title>
+<style type="text/css">
+	body{background: #272822;}
+	.fr{float: right;}
+	.div1{width: 200px; height: 200px; background: #0af; display: flex;}
+	.div2{width: 100px; height: 100px; background: red;}
+</style>
+</head>
+<body>
+	<div class="div1">
+		<div class="fr div2"></div>
+	</div>
+</body>
+</html>

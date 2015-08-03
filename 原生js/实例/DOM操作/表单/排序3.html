@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #fff}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+function log(value) {
+    console.log(value);
+}
+window.onload = function () {
+    var oTab = document.getElementsByTagName('table')[0];
+    var oTr = oTab.tBodies[0].rows;
+    var oBtn = document.getElementById('btn');
+
+    oBtn.onclick = function () {
+        var arr = [];
+        for (var i=0; i<oTr.length; i++) {
+            arr[i] = oTr[i];
+        }
+        arr.sort(function (o1, o2) {
+            var id1 = o1.cells[0].innerHTML;
+            var id2 = o2.cells[0].innerHTML;
+
+            return id1-id2;
+        });
+        for (var i=0; i<arr.length; i++) {
+            oTab.tBodies[0].appendChild(arr[i]);
+        }
+    }
+
+}    
+</script>
+<input id="btn" type="button" value="排序">
+<table border="1" width="500">
+    <thead>
+        <td>id</td>
+        <td>name</td>
+        <td>age</td>
+        <td>操作</td>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>2</td>
+            <td>张三</td>
+            <td>27</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>raimon</td>
+            <td>24</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>小六</td>
+            <td>30</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>李四</td>
+            <td>22</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>王五</td>
+            <td>25</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+.btn {
+    margin: 5px;
+}
+</style>
+</head>
+<body>
+<button class="btn">按钮1</button>
+<button class="btn">按钮2</button>
+<button class="btn">按钮3</button>
+<button class="btn">按钮4</button>
+<button class="btn">按钮5</button>
+<script type="text/javascript" src="vQuery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.btn').toggle(
+            function () {
+                console.log('a');
+            },
+            function () {
+                console.log('b');
+            },
+            function () {
+                console.log('c');
+            }
+        );
+    });
+</script>
+</body>
+</html>

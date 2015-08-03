@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+#div1 {
+    width: 100px;
+    height: 100px;
+    background: #0af;
+}
+</style>
+</head>
+<body>
+<button id="btn1">显示</button>
+<button id="btn2">隐藏</button>
+<div id="div1"></div>
+<script type="text/javascript" src="vQuery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#btn1').click(function () {
+            $('#div1').show();
+        });
+        $('#btn2').click(function () {
+            $('#div1').hide();
+        });
+    });
+</script>
+</body>
+</html>

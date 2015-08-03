@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{
+    margin: 0; 
+    padding: 0;
+}
+p {
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #0af;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div>
+    <p>摇一摇</p>
+</div>
+<script type="text/javascript">
+window.onload = function () {
+    if (window.DeviceMotionEvent) { 
+             window.addEventListener('devicemotion',deviceMotionHandler, false);  
+    } 
+    var speed = 30;//speed
+    var x = y = z = lastX = lastY = lastZ = 0;
+    function deviceMotionHandler(eventData) {  
+      var acceleration =event.accelerationIncludingGravity;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
+                //简单的摇一摇触发代码
+                alert(1);
+            }
+            lastX = x;
+            lastY = y;
+            lastZ = z;
+    }
+}   
+</script>
+</body>
+</html>

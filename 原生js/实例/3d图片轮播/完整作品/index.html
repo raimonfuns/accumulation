@@ -1,0 +1,162 @@
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body, ul{margin: 0; padding: 0;}
+
+#box{position:relative;width:1079px;height:445px;margin:100px auto 0;}
+#box ul{position:relative;width:1079px;height:445px;}
+#box li{position:absolute;list-style:none;width:0;height:0;top:222px;left:540px;z-index:0;cursor:pointer;overflow:hidden;border-radius:3px;}
+#box li img{width:100%;height:100%;}
+
+</style>
+</head>
+<body>
+
+<div id="box">
+    <ul>
+        <li><img src="images/1.jpg"></li>
+        <li><img src="images/2.jpg"></li>
+        <li><img src="images/3.jpg"></li>
+        <li><img src="images/4.jpg"></li>
+        <li><img src="images/5.jpg"></li>
+        <li><img src="images/6.jpg"></li>
+        <li><img src="images/7.jpg"></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+function movePic(id) {
+    this.init(id);
+}
+movePic.prototype = {
+    init: function (id) {
+        var _this = this;
+        this.wrap = document.getElementById(id);
+        this.oUl = this.wrap.getElementsByTagName('ul')[0];
+        this.aLi = this.oUl.getElementsByTagName('li');
+        this.arr = [];
+        this.options = [
+            {width:186, height:278, top:84, left:200, zIndex:1},
+            {width:223, height:334, top:56, left:0, zIndex:2},
+            {width:262, height:390, top:28, left:200, zIndex:3},
+            {width:298, height:445, top:0, left:388, zIndex:4},
+            {width:262, height:390, top:28, left:616, zIndex:3},
+            {width:223, height:334, top:56, left:816, zIndex:2},
+            {width:186, height:278, top:84, left:616, zIndex:1} 
+        ];
+        this.aSort = [];
+        this.Center = 3;
+        
+        for (var i = 0; i < this.aLi.length; i++) {
+            this.aSort[i] = this.aLi[i];
+        }
+        this.aSort.unshift(this.aSort.pop());
+        this.setUp();
+        this.doImgClick();
+        this.timer = setInterval(function () {
+            _this.doNext();
+        }, 3000);
+        this.wrap.onmouseover = function () {
+            clearInterval(_this.timer);
+        }
+        this.wrap.onmouseout = function () {
+            _this.timer = setInterval(function () {
+                _this.doNext();
+            }, 3000);
+        }
+    },
+    doPrev: function () {
+        this.aSort.unshift(this.aSort.pop());
+        this.setUp();
+    },
+    doNext: function () {
+        this.aSort.push(this.aSort.shift());
+        this.setUp();
+    },
+    doImgClick: function () {
+        var _this = this;
+        for (var i = 0; i < this.aSort.length; i++) {
+            this.aSort[i].onclick = function () {
+                if (this.index > _this.Center) {
+                    for (var i = 0; i < this.index - _this.Center; i++) {
+                        _this.aSort.push(_this.aSort.shift());
+                    }
+                    _this.setUp();
+                }
+                if (this.index < _this.Center) {
+                    for (var i = 0; i < _this.Center - this.index; i++) {
+                        _this.aSort.unshift(_this.aSort.pop());
+                    }
+                    _this.setUp();
+                }
+            }
+        }
+    },
+    setUp: function () {
+        for (var i = 0; i < this.aSort.length; i++) {
+            this.oUl.appendChild(this.aSort[i]);
+        }
+        for (var i = 0; i < this.aSort.length; i++) {
+            this.aSort[i].index = i;
+            this.doMove(this.aSort[i], this.options[i]);
+        }
+    },
+    addEvent: function (oElement, sEventType, fnHandle) {
+        oElement.addEventListener ? oElement.addEventListener(sEventType, fnHandle, false) : oElement.attachEvent('on' + sEventType, fnHandle);
+    },
+    css: function (oElement, attr, value) {
+        if (arguments.length === 2) {
+            return oElement.currentStyle ? oElement.currentStyle[attr] : getComputedStyle(oElement, false)[attr];
+        } else if (arguments.length === 3) {
+            switch(attr) {
+                case 'width':
+                case 'height':
+                case 'top':
+                case 'left':
+                case 'bottom':
+                    oElement.style[attr] = value + 'px';
+                    break;
+                case 'opacity':
+                    oElement.style.filter = 'alpha(opcity:' + value + ')';
+                    oElement.style.opacity = value / 100;
+                    break;
+                default:
+                    oElement.style[attr] = value;
+                    break;
+            }
+        }
+    },
+    doMove: function (oElement, oAttr, fnCallback) {
+        var _this = this;
+        clearInterval(oElement.timer);
+        oElement.timer = setInterval(function () {
+            var bStop = true;
+            for (var property in oAttr) {
+                var iCur = parseFloat(_this.css(oElement, property));
+                property === 'opacity' && (iCur = parseInt(iCur.toFixed(2) * 100));
+                var iSpeed = (oAttr[property] - iCur) / 5;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                if (iCur != oAttr[property]) {
+                    bStop = false;
+                    _this.css(oElement, property, iCur + iSpeed);
+                } 
+            }
+            if (bStop) {
+                clearInterval(oElement.timer);
+                fnCallback && fnCallback.apply(this, arguments);   
+            }
+        }, 30);
+    }
+}
+
+window.onload = function () {
+    new movePic('box');
+}
+</script>
+</body>
+</html>

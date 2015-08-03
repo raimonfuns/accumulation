@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body{background: #272822;}
+    div{width: 100px; height: 100px; background: #0af; filter: alpha(opacity:30); opacity: 0.3;}
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+
+    <script type="text/javascript" src="move.js"></script>
+    <script type="text/javascript">
+    window.onload = function () {
+        var div = document.getElementById('div');
+
+        div.onmouseover = function () {
+            var that = this;
+            startMove(that, 'width', 300, function () {
+                startMove(that, 'height', 300, function () {
+                    startMove(that, 'opacity', 100);
+                });
+            });
+        }
+
+        div.onmouseout = function () {
+            var that = this;
+            startMove(that, 'opacity', 30, function () {
+                startMove(that, 'height', 100, function () {
+                    startMove(that, 'width', 100);
+                });
+            });
+        }
+    }
+    </script>
+</body>
+</html>

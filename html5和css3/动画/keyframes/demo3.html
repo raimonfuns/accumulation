@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822;}
+.box{
+    width: 100px; 
+    height: 100px; 
+    background: #0af;
+    animation: abc 3s both, def 3s both;
+}
+@keyframes abc {
+    0% {background: red;}
+    50% {background: green;}
+    100% {background: red;}
+}
+@keyframes def {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+</style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    function setCookie(name, value, iDay) {
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDay);
+        document.cookie = name + '=' + value + ';expires=' + oDate;
+    }
+    setCookie('user', 'raimon', 365);
+    setCookie('password', '123123', 7);
+
+    function getCookie(name) {
+        var arr1 = document.cookie.split('; ');
+        for (var i = 0; i < arr1.length; i++) {
+            var arr2 = arr1[i].split('=');
+            if (arr2[0] === name) {
+
+                return arr2[1];
+            }
+        }
+        return '';
+    }    
+    alert( getCookie('user') );
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

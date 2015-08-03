@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+div{width: 100px; height: 100px; background: #0af; position: absolute;}
+</style>
+<script type="text/javascript" src="vQuery2.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('div').hover(function () {
+        $(this).animate({'width': 200});
+    }, function () {
+        $(this).animate({'width': 100});
+    });
+});
+</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

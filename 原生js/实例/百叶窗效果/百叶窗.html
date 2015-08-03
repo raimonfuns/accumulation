@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js百叶窗效果</title>
+    <style type="text/css">
+    body{background: #272822; color: #fff;}
+    body, ul, p{
+        margin: 0; 
+        padding: 0;
+    }
+    ul{
+        float: left;
+        width: 300px;
+        margin: 20px;
+        border: 1px solid #fff;
+    }   
+    li{
+        list-style: none;
+        height: 30px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px dashed #fff;
+    }
+    div{
+        height: 60px;
+        position: absolute;
+        top: -30px;
+    }
+    p{
+        height: 30px;
+        line-height: 30px;
+    }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    window.onload = function () {
+        var oUl1 = document.getElementById('ul1'), 
+            oUl2 = document.getElementById('ul2');
+        
+        toShow(oUl1);
+        setTimeout(function () {
+            toShow(oUl2);
+        }, 2000);
+
+        function toShow(obj) {
+            var odiv = obj.getElementsByTagName('div'),
+                index = 0,
+                timer = null,
+                direction = true;
+
+            setInterval(function () {
+                toChange(odiv);
+            }, 4000);
+
+            function toChange(divs) {
+                clearInterval(timer);  // 保证只有一个定时器在工作
+                timer = setInterval(function () {
+                    if (index === divs.length) {
+                        clearInterval(timer);
+                        index = 0;
+                        direction = !direction;
+
+                    } else {
+                        $(divs[index]).animate({
+                            top: direction ? 0 : '-30px'
+                        });
+                        index++;
+                    }
+                }, 100);
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+    </ul>
+
+    <ul id="ul2">
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>1111111111</p>
+                <p>2222222222</p>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>
+<!-- 这是一个文章列表，所以用ul-li
+li里面有一个div，高度为li的2倍，包含2个文章标题，div的上下移动就是这个动画的核心
+需要两个定时器，一个设置多久运动一次，另一个设置div相继运动的间隔
+多个列表可以使用定时器延时从而形成错位
+
+难点：可以说是我薄弱的环节是js运动，所以第一次的时候，我使用jquery的animate函数
+bug：每次必须保证只有一个定时器在工作 -->

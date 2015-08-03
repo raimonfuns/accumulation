@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function Circle(r) {
+    this.r = r;
+}
+Circle.prototype = {
+    constructor: Circle,
+    getPerimeter: function () {
+        return 2*this.r*Math.PI;
+    },
+    getArea: function () {
+        
+        return this.r*this.r*Math.PI;
+    }
+}
+circle = new Circle(10);
+console.log(circle.getPerimeter());
+console.log(circle.getArea());
+</script>
+</body>
+</html>

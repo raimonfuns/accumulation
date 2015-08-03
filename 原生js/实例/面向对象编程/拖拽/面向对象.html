@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; height: 2000px;}
+#div1{width: 100px; height: 100px; background: #0af; position: absolute;}
+</style>
+</head>
+<body>
+    <div id="div1">div1</div>
+
+<script type="text/javascript">
+function getPos(oEvent) {
+    var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+    return {
+        x: oEvent.clientX - scrollLeft,
+        y: oEvent.clientY - scrollTop
+    }
+}
+
+var oDiv = null;
+var disX = null;
+var disY = null;
+
+window.onload = function () {
+    oDiv = document.getElementById('div1');
+
+    oDiv.onmousedown = mouseDown;
+}
+
+function mouseDown(ev) {
+
+    var oEvent = ev || event;
+
+    disX = getPos(oEvent).x - oDiv.offsetLeft;
+    disY = getPos(oEvent).y - oDiv.offsetTop;
+
+    document.onmousemove = mouseMove;
+
+    document.onmouseup = mouseUp;
+
+    return false;
+}
+
+function mouseMove(ev) {
+    var oEvent = ev || event;
+
+    oDiv.style.left = getPos(oEvent).x - disX + 'px';
+    oDiv.style.top = getPos(oEvent).y - disY + 'px';
+}
+
+function mouseUp() {
+    document.onmousemove = null;
+    document.onmouseup = null;
+}
+</script>
+</body>
+</html>

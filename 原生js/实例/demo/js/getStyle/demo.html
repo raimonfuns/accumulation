@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+.box{
+    color: #0af;
+    line-height: 30px;
+    opacity: 0.5;
+}
+</style>
+</head>
+<body>
+<div id="box" class="box"></div>
+<script type="text/javascript">
+var oBox = document.getElementById('box');
+function getStyle(element, cssPropertyName) {
+    if (window.getComputedStyle) {
+        return getComputedStyle(element, false)[cssPropertyName]
+    } else {
+        cssPropertyName = cssPropertyName.replace(/\-([a-zA-Z])/g, function( $, $1 ){
+            return $1.toUpperCase();
+        });
+        return element.currentStyle[cssPropertyName];
+    }
+}
+alert(getStyle(oBox, 'color'));
+alert(getStyle(oBox, 'line-height'));
+alert(getStyle(oBox, 'opacity'));
+</script>
+</body>
+</html>

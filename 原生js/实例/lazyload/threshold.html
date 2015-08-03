@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{margin: 0; padding: 0; background: #272822;}
+div{text-align: center; width: 50%; float: left; padding: 40px 0;}
+</style>
+</head>
+<body>
+    <div>
+        <img src="images/grey.gif" data-original="images/0.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/1.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/2.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/3.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/4.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/5.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/6.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/7.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/8.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/9.jpg" width="230" height="160">
+    </div>
+    <div>
+        <img src="images/grey.gif" data-original="images/10.jpg" width="230" height="160">
+    </div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('img').lazyload({
+        threshold: 200
+    });
+});
+</script>
+
+</body>
+</html>

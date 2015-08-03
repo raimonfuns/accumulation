@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background: #272822;">
+    
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <input id="btn" type="button" value="转移">
+
+    <ul id="ul2"></ul>
+
+    
+
+<script type="text/javascript">
+    window.onload = function () {
+        var oUl1 = document.getElementById('ul1');
+        var oUl2 = document.getElementById('ul2');
+        var aLi = oUl1.getElementsByTagName('li');
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function () {
+            var oLi = oUl1.children[0];
+            // oUl1.removeChild(oLi);
+            oUl2.appendChild(oLi);
+        }
+        
+    }
+</script>
+</body>
+</html>

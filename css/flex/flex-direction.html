@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+*{margin: 0; padding: 0;}
+.section{margin: 20px; display: flex; border: 3px solid gray;}
+.box{width: 50px; height: 50px; margin: 20px; line-height: 50px; text-align: center; background: #0af;}
+
+.row{flex-direction: row;}
+.row-reverse{flex-direction: row-reverse;}
+.column{flex-direction: column;}
+.column-reverse{flex-direction: column-reverse;}
+</style>
+</head>
+<body>
+	<div class="section row">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+	</div>
+	<div class="section row-reverse">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+	</div>
+	<div class="section column">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+	</div>
+	<div class="section column-reverse">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+	</div>
+</body>
+</html>
