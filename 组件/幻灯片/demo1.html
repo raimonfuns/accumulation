@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+*{margin: 0; padding: 0;}
+body{background: #272822;}
+li{list-style: none;}
+.slider{width: 300px; height: 200px; position: relative;}
+.slider .content{position: absolute; height: 200px;}
+.slider .content li{width: 300px; height: 200px; line-height: 200px; float: left; font-size: 20px; font-weight: bold; text-align: center; color: #272822;}
+.slider .tab{position: absolute; bottom: 10px; right: 10px;}
+.slider .tab li{float: left; width: 30px; height: 30px; line-height: 30px; border-radius: 15px; margin-right: 5px; background: orange; text-align: center;}
+.contentItem1{background: #80A021;}
+.contentItem2{background: #B08906;}
+.contentItem3{background: #8B3FF8;}
+.sideBtn{position: absolute; display: block; top: 90px; padding: 5px; color: #272822; text-decoration: none;}
+.prev{left: 0;}
+.next{right: 0;}
+</style>
+</head>
+<body>
+	<div id="slider" class="slider">
+		<ul class="content">
+			<li class="contentItem1">1</li>
+			<li class="contentItem2">2</li>
+			<li class="contentItem3">3</li>
+		</ul>
+		<ul class="tab">
+			<li class="tabItem1">1</li>
+			<li class="tabItem2">2</li>
+			<li class="tabItem3">3</li>
+		</ul>
+		<a class="prev sideBtn" href="javascript:;">prev</a>
+		<a class="next sideBtn" href="javascript:;">next</a>
+	</div>	
+<script type="text/javascript" src="js/require.js" data-main="js/main"></script>
+</body>
+</html>

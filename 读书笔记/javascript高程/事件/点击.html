@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+
+<div id="div">请单击我试试</div>
+
+<script type="text/javascript" src="EventUtil.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		var oDiv = document.getElementById('div');
+		EventUtil.addHandler(oDiv, 'click', function () {
+			alert('谢谢你单击了我');
+		});
+	};
+</script>	
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript" src="EventUtil.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		EventUtil.addHandler(window, 'beforeunload', function (event) {
+			event = EventUtil.getEvent(event);
+			var confirmMessage = '亲，数据还没保存，确定要离开吗？';
+			event.returnValue = confirmMessage;
+			return confirmMessage;
+		});
+	};
+</script>	
+</body>
+</html>

@@ -7,18 +7,13 @@
 </head>
 <body>
 	<div id="test1">$.event</div>
+	<div id="isDefaultPrevented">isDefaultPrevented</div>
 <script type="text/javascript" src="../core/zepto_core.js"></script>
 <script type="text/javascript" src="event.js"></script>
 <script type="text/javascript">
-
-// $.event
-$.Event('myEvent');
-$('#test1').on('myEvent', function (e) {
-	console.log(e.target);
-});
-$('#test1').trigger('myEvent');
-
-
+/** 
+ *	代理
+ */
 function a() {
 	console.log('name: ' + this.name + ' / age: ' + this.age);
 }
@@ -26,8 +21,16 @@ var info = {
 	name: 'raimon', 
 	age: '24'
 };
-// a.call({name: 'raimon', age: '24'});
 $.proxy(a, info)();
+
+// 传参数
+function logArg() {
+	console.log('-- this');
+	console.log(this);
+	console.log('-- arguments');
+	console.log(arguments);
+}
+$.proxy(logArg, {}, 2, 3, 4)(5,6);
 </script>
 </body>
 </html>

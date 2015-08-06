@@ -35,7 +35,7 @@
      * @returns {Array}
      */
   function findHandlers(element, event, fn, selector) {
-        //解析命名空间事件名
+    //解析命名空间事件名
     event = parse(event)
 
         //
@@ -228,13 +228,14 @@
     var args = (2 in arguments) && slice.call(arguments, 2)   //如果传了第3个参数，取到第3个参数以后（包含第3个参数）所有的参数数组，挺好的判断技巧
     if (isFunction(fn)) {   //fn是函数
         //采用闭包，以context调用函数。
-        // args.concat(slice.call(arguments)) 将传参挪到前面  如传递给$.proxy(fn,context,3,4);  转变成  fn.apply(context,[3,4,fn,context,3,4])
+        // args.concat(slice.call(arguments)) 将传参挪到前面  如传递给$.proxy(fn,context,3,4);  
+        // 坑！这里的arguments是proxyFn的参数数组，而不是$.proxy
       var proxyFn = function(){ return fn.apply(context, args ? args.concat(slice.call(arguments)) : arguments) }
-        // 标记函数
+      // 标记函数
       proxyFn._zid = zid(fn)
       return proxyFn
-    } else if (isString(context)) {  //context是字符串, 实际传参(context,name)
-      if (args) {                           //修正传参，再以$.proxy调用
+    } else if (isString(context)) {     //context是字符串, 实际传参(context,name)
+      if (args) {                       //修正传参，再以$.proxy调用
         args.unshift(fn[context], fn)   // unshift  往数组开头添加新的项
         return $.proxy.apply(null, args)
       } else {
@@ -296,20 +297,20 @@
 
     /**
      * 修正event对象
-     * @param event   代理的event对象 原生event对象
+     * @param event   代理的event对象
      * @param source  原生event对象
      * @returns {*}
      */
   function compatible(event, source) {
 
-        //event.isDefaultPrevented   是否已调用了preventDefault方法
-        //
+    //event.isDefaultPrevented   是否已调用了preventDefault方法
 
-     //event是代理事件对象时，赋值给source
+    //event是代理事件对象时，赋值给source
+    //如果没有调用过preventDefault方法
     if (source || !event.isDefaultPrevented) {
       source || (source = event)
 
-        //遍历，代理preventDefault  stopImmediatePropagation   stopPropagation等方法
+      //遍历，代理preventDefault  stopImmediatePropagation   stopPropagation等方法
       $.each(eventMethods, function(name, predicate) {
         var sourceMethod = source[name]
         event[name] = function(){          //扩展event对象，代理preventDefault  stopImmediatePropagation   stopPropagation方法 ，兼容浏览器不支持，同时做其他事情
@@ -341,7 +342,6 @@
      //复制event属性至proxy，ignoreProperties里包含的属性除外
     if (!ignoreProperties.test(key) && event[key] !== undefined) proxy[key] = event[key]
 
-    //
     return compatible(proxy, event)
   }
 
@@ -398,8 +398,9 @@
       return $this
     }
 
-      //选择器非字符串  callback非方法
-      //未传data    on('click','.ss',function(){})
+    //函数重载
+    //选择器非字符串  callback非方法
+    //未传data    on('click','.ss',function(){})
     if (!isString(selector) && !isFunction(callback) && callback !== false)
       callback = data, data = selector, selector = undefined
       //data传了function    或未传
@@ -476,27 +477,22 @@
      * @returns {*}
      */
   $.fn.trigger = function(event, args){
-      //修正event为事件对象
+    //修正event为事件对象
     event = (isString(event) || $.isPlainObject(event)) ? $.Event(event) : compatible(event)
 
-      //传参
+    //传参
     event._args = args
 
     return this.each(function(){
       // handle focus(), blur() by calling them directly
-        //如果事件是focus blur
+      //如果事件是focus blur，直接执行
       if (event.type in focus && typeof this[event.type] == "function") this[event.type]()
       // items in the collection might not be DOM elements
       // 支持浏览器原生触发事件API
-      //DOM源码
-//        /**
-//         @param {Event} event
-//         @return {boolean}
-//         */
-//        EventTarget.prototype.dispatchEvent = function(event) {};
+      // EventTarget.prototype.dispatchEvent = function(event) {};
       else if ('dispatchEvent' in this) this.dispatchEvent(event)
 
-        //模拟触发事件
+      //模拟触发事件
       else $(this).triggerHandler(event, args)
     })
   }

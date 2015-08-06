@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>zepto core</title>
+<style type="text/css">body{background: #272822; color: #7FE22E;}</style>
+</head>
+<body>
+	<div id="btn">btn</div>
+<script type="text/javascript" src="../core/zepto_core.js"></script>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+
+$('#btn').on({click: function (e) {
+	alert(e.target.tagName);
+}});	
+</script>
+</body>
+</html>
