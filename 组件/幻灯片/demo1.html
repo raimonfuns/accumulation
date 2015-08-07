@@ -7,11 +7,12 @@
 *{margin: 0; padding: 0;}
 body{background: #272822;}
 li{list-style: none;}
-.slider{width: 300px; height: 200px; position: relative;}
+.slider{width: 300px; height: 200px; position: relative; margin: 40px auto; overflow: hidden;}
 .slider .content{position: absolute; height: 200px;}
-.slider .content li{width: 300px; height: 200px; line-height: 200px; float: left; font-size: 20px; font-weight: bold; text-align: center; color: #272822;}
+.slider .content li{width: 300px; height: 200px; line-height: 200px; font-size: 20px; font-weight: bold; text-align: center; color: #272822;}
 .slider .tab{position: absolute; bottom: 10px; right: 10px;}
-.slider .tab li{float: left; width: 30px; height: 30px; line-height: 30px; border-radius: 15px; margin-right: 5px; background: orange; text-align: center;}
+.slider .tab li{float: left; width: 30px; height: 30px; line-height: 30px; border-radius: 15px; margin-right: 5px; background: orange; text-align: center; cursor: pointer;}
+.slider .tab li.active{background: #0af;}
 .contentItem1{background: #80A021;}
 .contentItem2{background: #B08906;}
 .contentItem3{background: #8B3FF8;}
@@ -21,16 +22,61 @@ li{list-style: none;}
 </style>
 </head>
 <body>
-	<div id="slider" class="slider">
+	<h2>正常</h2>
+	<div id="slider1" class="slider">
 		<ul class="content">
 			<li class="contentItem1">1</li>
 			<li class="contentItem2">2</li>
 			<li class="contentItem3">3</li>
+			<li class="contentItem2">4</li>
+			<li class="contentItem3">5</li>
 		</ul>
 		<ul class="tab">
-			<li class="tabItem1">1</li>
+			<li class="tabItem1 active">1</li>
 			<li class="tabItem2">2</li>
 			<li class="tabItem3">3</li>
+			<li class="tabItem2">4</li>
+			<li class="tabItem3">5</li>
+		</ul>
+		<a class="prev sideBtn" href="javascript:;">prev</a>
+		<a class="next sideBtn" href="javascript:;">next</a>
+	</div>	
+
+	<h2>left</h2>
+	<div id="slider2" class="slider">
+		<ul class="content">
+			<li class="contentItem1">1</li>
+			<li class="contentItem2">2</li>
+			<li class="contentItem3">3</li>
+			<li class="contentItem2">4</li>
+			<li class="contentItem3">5</li>
+		</ul>
+		<ul class="tab">
+			<li class="tabItem1 active">1</li>
+			<li class="tabItem2">2</li>
+			<li class="tabItem3">3</li>
+			<li class="tabItem2">4</li>
+			<li class="tabItem3">5</li>
+		</ul>
+		<a class="prev sideBtn" href="javascript:;">prev</a>
+		<a class="next sideBtn" href="javascript:;">next</a>
+	</div>	
+
+	<h2>fade</h2>
+	<div id="slider3" class="slider">
+		<ul class="content">
+			<li class="contentItem1">1</li>
+			<li class="contentItem2">2</li>
+			<li class="contentItem3">3</li>
+			<li class="contentItem2">4</li>
+			<li class="contentItem3">5</li>
+		</ul>
+		<ul class="tab">
+			<li class="tabItem1 active">1</li>
+			<li class="tabItem2">2</li>
+			<li class="tabItem3">3</li>
+			<li class="tabItem2">4</li>
+			<li class="tabItem3">5</li>
 		</ul>
 		<a class="prev sideBtn" href="javascript:;">prev</a>
 		<a class="next sideBtn" href="javascript:;">next</a>

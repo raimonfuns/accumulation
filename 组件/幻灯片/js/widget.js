@@ -1,6 +1,6 @@
 define(function () {
     function Widget() {
-        this.boundingBox = null;
+        
     }
 
     Widget.prototype = {
