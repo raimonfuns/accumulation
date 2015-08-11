@@ -1,0 +1,6 @@
+Question：
+1、为什么#content设置了top和left都为20%
+
+
+Tip：
+1、.content > li表示在.content中的子元素（不包括孙子）下查找li，这样就不会深入到每个li的面的内容
