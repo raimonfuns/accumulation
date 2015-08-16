@@ -9,6 +9,38 @@
     <link rel='stylesheet' href='pageC.css' />
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
     <script type="text/javascript" src="http://img.mukewang.com/down/55ac9ea30001ace700000000.js"></script>
+<style type="text/css">
+    .bg-mask{
+        background: #a7d9dd;
+        width: 7%;
+        height: 4%;
+        position: absolute;
+        top: 32%;
+        left: 53%;
+    }
+    .hong{
+        position: absolute;
+        font-size: 14px;
+        color: #6784D3;
+        top: 421px;
+        left: 675px;
+    }
+    .quan{
+        position: absolute;
+        font-size: 14px;
+        color: #FF8B88;
+        top: 421px;
+        left: 774px;
+    }
+    .text{
+        position: absolute;
+        font-size: 24px;
+        color: #fff;
+        top: 10%;
+        left: 41%;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
 	<div id="content">
@@ -26,6 +58,7 @@
                 </div>
                 <!-- 太阳 -->
                 <div id="sun"></div>
+                <div class="bg-mask"></div>
 			</li>
 			<!-- 第二副画面 -->
             <li>
@@ -75,6 +108,9 @@
             </li>
 		</ul>
 		<div id="boy" class="charector"></div>
+        <div class="hong">鸿</div>
+        <div class="quan">权</div>
+        <div class="text">权权，别老说我不浪漫^_^</div>
 	</div>
     <div class="button">
         <button>开始</button>
@@ -133,12 +169,12 @@ $(function() {
                 scrollTo(5000, 1);
             }).then(function() {
                 // 第二次走路
-                return boy.walkTo(5000, 0.5);
+                // return boy.walkTo(5000, 0.5);
             });
     });
     
     //用来临时调整页面
-    // swipe.scrollTo(0, 0);
+    // swipe.scrollTo(visualWidth, 0);
     
     /////////
     //右边飞鸟 //
