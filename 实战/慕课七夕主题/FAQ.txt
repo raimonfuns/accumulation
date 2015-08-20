@@ -1,6 +1,39 @@
 Question：
 1、为什么#content设置了top和left都为20%
+A：实例而已，跟项目无关啦
+
+2、小男孩和主题页面的关系
+A：并列
+
+3、position()获取的是什么高度？
+
+4、'' + className + '' 神马写法，确保转字符串？
+
+5、animation-timing-function为什么是steps(1, start)
+A:状态变化速度，有linear、easein、ease-out等等，这些都是连续的，但是如果在这里使用这些函数，则会背景图切换的时候，整个过程都看到了，我们要的效果是一桢一桢的变化，所以使用step(1, start)，综上所述，浏览器从一个状态向另一个状态过渡，是平滑过渡。steps函数可以实现分步过渡
+
+6、steps函数又是怎么使用的呢？
+A：这篇文章有介绍http://www.tuicool.com/articles/neqMVr，弄明白桢的分解就行了，start、end用处不大，理解就行
+
+7、animation和transition动画的开始和暂停有什么需要注意的地方？
+A：animation暂停是会立即跳到最后一桢，下一次开始时，会从头开始，而transition暂停时立刻停在当前帧，下一次开始时，会把上一次的动画运行完，在开始新的动画
+
+8、用了Deferred，有啥好处？
+A：在js编程中，有同步和异步编程，传统的异步编程就是在操作完之后，使用回调函数传回结果，例如animation的回调函数，一个动画完成之后，接另一个动画，这嵌套越多，会导致阅读变得困难，而且造成较强的耦合，不好拓展，所以，有了promise，有了它，就可以像同步代码一样去写异步代码。
+
+9、运用了translate后，计算元素的坐标时，要注意什么问题？
+A：必须加上translate的值，例如、元素的页面X坐标 = left + translateX，元素的页面Y坐标 = top + translateY
+
+10、小男孩进商店的时候，为什么要计算instanceX？
+A：只有计算了instanceX，小男孩才能从页面的任何位置移动到门的正中间，所以，可以把小男孩停在0.2*页面宽度的位置，试试就知道了
+
+
+
+
+
 
 
 Tip：
 1、.content > li表示在.content中的子元素（不包括孙子）下查找li，这样就不会深入到每个li的面的内容
+2、<div class="b_background"></div><div class="b_background_preload"></div>，用一个b_background_preload的节点来预加载图片，防止闪屏
+3、background-size: 100% 100%、可以让图片填充整个盒子
