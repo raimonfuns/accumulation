@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="underscore.js"></script>	
+<script type="text/javascript">
+function log(value) {
+	console.log(value);
+}
+</script>
+<script>
+var arr = [1, 2, 3, 4, 5, 6];
+var index = _.findIndex(arr, function (num) { return num % 2 == 0 });
+console.log(index);
+</script>	
+</body>
+</html>

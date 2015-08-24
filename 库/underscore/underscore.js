@@ -66,6 +66,7 @@
   // functions.
   // 内部函数，根据参数返回不同的回调函数
   // 使用void目的就是为了得到javascript中的undefined
+  // 大多数情况下，走的是argCount = null的这一步，也就是重新绑定context，比如each，map方法等
   var optimizeCb = function(func, context, argCount) {
     if (context === void 0) return func; // TODO
     switch (argCount == null ? 3 : argCount) {
@@ -78,6 +79,7 @@
       case 3: return function(value, index, collection) {
         return func.call(context, value, index, collection);
       };
+      // 在reduce的时候用到
       case 4: return function(accumulator, value, index, collection) {
         return func.call(context, accumulator, value, index, collection);
       };
@@ -90,6 +92,7 @@
   // A mostly-internal function to generate callbacks that can be applied
   // to each element in a collection, returning the desired result — either
   // identity, an arbitrary callback, a property matcher, or a property accessor.
+  // 使用次数最多的内部函数，根据传入的参数来处理并返回各种回调函数
   var cb = function(value, context, argCount) {
     if (value == null) return _.identity;
     if (_.isFunction(value)) return optimizeCb(value, context, argCount);
@@ -152,10 +155,12 @@
   _.each = _.forEach = function(obj, iteratee, context) {
     iteratee = optimizeCb(iteratee, context);
     var i, length;
+    // 数组
     if (isArrayLike(obj)) {
       for (i = 0, length = obj.length; i < length; i++) {
         iteratee(obj[i], i, obj);
       }
+    // 对象
     } else {
       var keys = _.keys(obj);
       for (i = 0, length = keys.length; i < length; i++) {
@@ -166,6 +171,7 @@
   };
 
   // Return the results of applying the iteratee to each element.
+  // 注意，遍历对象时也是返回数组
   _.map = _.collect = function(obj, iteratee, context) {
     iteratee = cb(iteratee, context);
     var keys = !isArrayLike(obj) && _.keys(obj),
@@ -179,6 +185,7 @@
   };
 
   // Create a reducing function iterating left or right.
+  // 这个方法有点绕，配合reduce.html来理解会好一点，用最简单的例子，能跑通就行了
   function createReduce(dir) {
     // Optimized iterator function as using arguments.length
     // in the main function will deoptimize the, see #1991.
@@ -191,11 +198,13 @@
     }
 
     return function(obj, iteratee, memo, context) {
+      // 注意，没有上下文是，直接返回iteratee
       iteratee = optimizeCb(iteratee, context, 4);
       var keys = !isArrayLike(obj) && _.keys(obj),
           length = (keys || obj).length,
           index = dir > 0 ? 0 : length - 1;
       // Determine the initial value if none is provided.
+      // 如果没有传入memo，则将memo的值设为数组/对象的第一个或者最后一个（reduceRight的方式）的值
       if (arguments.length < 3) {
         memo = obj[keys ? keys[index] : index];
         index += dir;
@@ -234,6 +243,7 @@
   };
 
   // Return all the elements for which a truth test fails.
+  // _.negate返回函数取非， _.negate(fn) --> !fn
   _.reject = function(obj, predicate, context) {
     return _.filter(obj, _.negate(cb(predicate)), context);
   };
@@ -266,6 +276,8 @@
 
   // Determine if the array or object contains a given item (using `===`).
   // Aliased as `includes` and `include`.
+  // _.value 将数组转对象
+  // _.indexOf 典型的for循环返回index
   _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
     if (!isArrayLike(obj)) obj = _.values(obj);
     if (typeof fromIndex != 'number' || guard) fromIndex = 0;
@@ -300,10 +312,12 @@
   };
 
   // Return the maximum element (or element-based computation).
+  // 传入指定对象的某个属性作为比较的属性哦
   _.max = function(obj, iteratee, context) {
     var result = -Infinity, lastComputed = -Infinity,
         value, computed;
     if (iteratee == null && obj != null) {
+      // 对象转数组
       obj = isArrayLike(obj) ? obj : _.values(obj);
       for (var i = 0, length = obj.length; i < length; i++) {
         value = obj[i];
@@ -315,6 +329,7 @@
       iteratee = cb(iteratee, context);
       _.each(obj, function(value, index, list) {
         computed = iteratee(value, index, list);
+        // 语句的后半部分在正常情况下不会出现的
         if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
           result = value;
           lastComputed = computed;
@@ -357,6 +372,7 @@
     var shuffled = Array(length);
     for (var index = 0, rand; index < length; index++) {
       rand = _.random(0, index);
+      console.log('rand: ' + rand);
       if (rand !== index) shuffled[index] = shuffled[rand];
       shuffled[rand] = set[index];
     }
@@ -615,6 +631,7 @@
   };
 
   // Generator function to create the findIndex and findLastIndex functions
+  // 通过一个过滤函数来筛选符合条件的item，一旦符合，立即停止查找，返回index，也可用于返回item（array[index]）
   function createPredicateIndexFinder(dir) {
     return function(array, predicate, context) {
       predicate = cb(predicate, context);
@@ -633,6 +650,7 @@
 
   // Use a comparator function to figure out the smallest index at which
   // an object should be inserted so as to maintain order. Uses binary search.
+  // 从数组的中间开始遍历，在某些情况下可以减少遍历的次数
   _.sortedIndex = function(array, obj, iteratee, context) {
     iteratee = cb(iteratee, context, 1);
     var value = iteratee(obj);
@@ -645,6 +663,7 @@
   };
 
   // Generator function to create the indexOf and lastIndexOf functions
+  // 只看最后一个for循环就可以了，其他的用不上，less is more，呵呵
   function createIndexFinder(dir, predicateFind, sortedIndex) {
     return function(array, item, idx) {
       var i = 0, length = getLength(array);
@@ -950,6 +969,7 @@
   };
 
   // Retrieve the values of an object's properties.
+  // 把对象转成数组
   _.values = function(obj) {
     var keys = _.keys(obj);
     var length = keys.length;

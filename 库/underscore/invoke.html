@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="underscore.js"></script>	
+<script type="text/javascript">
+function log(value) {
+	console.log(value);
+}
+</script>
+<script>
+// 题外话：执行sort时，
+// [8, 5, 10].sort() -> [10, 5, 8]
+// [8, 5, 9].sort() -> [5, 8, 9]
+// 奇怪，数字如果大于2位数，就是从大到小排序，所以，排序的时候可以传入fun函数处理一下
+
+  
+var arr1 = [4, 2, 8];
+var arr2 = [8, 5, 10];
+// var ret = _.invoke([arr1, arr2], 'sort');
+var ret = _.invoke([arr1, arr2], 'sort', function (a, b) { return a - b });
+log(ret);
+</script>	
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="underscore.js"></script>	
+<script type="text/javascript">
+function log(value) {
+	console.log(value);
+}
+</script>
+<script>
+// 不同数组
+var arr = [1, 4, 20, 15, 8];
+var result = _.max(arr);
+log(result);
+
+// 对象之间
+var person1 = {name: 'cp3', age: 22};
+var person2 = {name: 'raimonfuns', age: 34};
+var person3 = {name: 'raimon', age: 28};
+var persons = [person1, person2];
+var personResult = _.max(persons, function (obj) { return obj.age });
+log(personResult);
+</script>	
+</body>
+</html>
