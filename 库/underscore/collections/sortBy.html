@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="underscore.js"></script>	
+<script type="text/javascript">
+function log(value) {
+	console.log(value);
+}
+</script>
+<script>
+var arr = [6, 2, 1, 4, 5];
+var result = _.sortBy(arr);
+log(result);
+
+var person1 = {name: 'cp3', age: 22};
+var person2 = {name: 'raimonfuns', age: 34};
+var person3 = {name: 'raimon', age: 28};
+var persons = [person1, person2, person3];
+
+var result = _.sortBy(persons, 'age');
+log(result);
+</script>	
+</body>
+</html>
