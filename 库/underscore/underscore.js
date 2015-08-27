@@ -486,7 +486,7 @@
   _.first = _.head = _.take = function(array, n, guard) {
     if (array == null) return void 0;
     if (n == null || guard) return array[0];
-    return _.initial(array, array.length - n);
+    return _.initial(array, array.length - n); //  array.length - ( array.length - n ) = n ---> slice(0, n);
   };
 
   // Returns everything but the last entry of the array. Especially useful on
@@ -517,6 +517,7 @@
   };
 
   // Internal implementation of a recursive `flatten` function.
+  // 我自己写的方法比这个要好理解一些
   var flatten = function(input, shallow, strict, startIndex) {
     var output = [], idx = 0;
     for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
@@ -549,6 +550,7 @@
   // Produce a duplicate-free version of the array. If the array has already
   // been sorted, you have the option of using a faster algorithm.
   // Aliased as `unique`.
+  // 先用flatten把所有数组转成一维数组，然后遍历，用contains判断即可
   _.uniq = _.unique = function(array, isSorted, iteratee, context) {
     if (!_.isBoolean(isSorted)) {
       context = iteratee;

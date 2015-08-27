@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/html" id="tpl">
+	{% if data && data.length  > 0 %}
+	<table class="u-table-list">
+		<tr>
+			<th>获奖时间</th><th>礼品名称</th>	</tr>
+		{% for v in data %}
+			<tr>
+				<td>{{v.time}} </td><td>{{v.giftName}}</td>			
+				
+			</tr>
+		{% endfor %}
+
+	</table>　
+	{% else %}
+		还没有您的获奖记录
+	{% endif %}
+</script>
+
+<script type="text/javascript" src="http://vipweb.bs2.yy.com/swigfixed.min.js"></script>
+<script>
+	var json = {
+		data: [{
+			time: '2015-05-05',
+			giftName: 'YY会员'
+		}]
+	};
+	var html = document.getElementById('tpl').innerHTML;
+
+	var tpl = swig.compile(html);
+	document.write( tpl(json) );
+</script>
+
+</body>
+</html>

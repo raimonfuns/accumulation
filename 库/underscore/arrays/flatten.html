@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="../underscore.js"></script>	
+<script type="text/javascript">
+function log(value) {
+	console.log(value);
+}
+</script>
+<script>
+var arr = [1, 2, 3, 4, [[[5], [10]]], [6]];
+// var arr = [[1], [2]];
+
+// var result1 = _.flatten(arr);
+// var result2 = _.flatten(arr, true);
+
+// me
+function flatten1(array, once) {
+	var ret = [];
+	var item;
+	var count = 0;
+	(function re(array) {
+		for (var i = 0; i < array.length; i++) {
+			item = array[i];
+			if (Object.prototype.toString.call(item).slice(8, -1).toLowerCase() == 'array') {
+				if (once && count == 1) {
+					ret.push(item);
+					count = 0;
+				} else {
+					count++;
+					re(item);
+				}		
+			} else {
+				ret.push(item);
+			}
+		}
+	})(array);
+	return ret;
+} 
+
+var result1 = flatten1(arr);
+var result2 = flatten1(arr, true);
+
+log(arr);
+log(result1);
+log(result2);
+</script>	 
+</body>
+</html>

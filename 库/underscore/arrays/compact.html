@@ -15,15 +15,25 @@ function log(value) {
 }
 </script>
 <script>
-var arr = [16, 22, 21, 34, 15, 34, 15];
+var arr = [0, 1, false, 2, '', 3];
 
 
-var result1 = _.first(arr)
-var result2 = _.first(arr, 2);
+// var result1 = _.compact(arr)
 
+// 我的实现方法
+function compact(arr) {
+	var ret = [];
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i]) {
+			ret.push(arr[i]);
+		}
+	}
+	return ret;
+}
+
+var result1 = compact(arr);
 
 log(result1);
-log(result2);
 </script>	 
 </body>
 </html>
