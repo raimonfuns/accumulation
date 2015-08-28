@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="../underscore.js"></script>	
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var log = _.bind(console.log, console);
+</script>	 
+
+<script type="text/javascript">
+// 函数执行的顺序是倒序的，先执行exclaim，然后把结果作为参数传递给greet
+var greet = function (name) { return 'hi: ' + name; };
+var exclaim = function (statement) { alert(statement); return statement.toUpperCase() + '!'; };
+var welcome = _.compose(greet, exclaim);
+log(welcome('raimonfuns'));
+</script>
+</body>
+</html>

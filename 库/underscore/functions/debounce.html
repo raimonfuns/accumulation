@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="../underscore.js"></script>	
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var log = _.bind(console.log, console);
+</script>	 
+
+<script type="text/javascript">
+
+// 在函数最后一次调用时刻的 wait 毫秒之后，执行延时函数
+// 就好比有些浏览器在调整窗口大小的时候，只有当用户松开鼠标时，才执行resize事件
+// 目前所有浏览器都是实时执行resize事件的
+
+var count = 0;
+function print() {
+	log(count++);
+}
+
+// var lazyFn = _.debounce(print, 100);
+// $(window).resize(lazyFn);
+
+var lazyFn = _.debounce(print, 100, true);
+$(window).resize(lazyFn);
+
+	
+
+</script>
+</body>
+</html>

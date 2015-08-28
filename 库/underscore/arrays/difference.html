@@ -15,8 +15,9 @@ function log(value) {
 }
 </script>
 <script>
+var arr = [1, 2, 3, 4, 5];
 
-var result1 = _.intersection([1, 2, 3], [1, 3, 4], [1, 3, 5]);
+var result1 = _.difference(arr, [1, 2]);
 
 log(result1);
 </script>	 

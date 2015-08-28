@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="../underscore.js"></script>	
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var log = _.bind(console.log, console);
+</script>	 
+
+<script type="text/javascript">
+
+// 当重复调用函数的时候，至少每隔 wait毫秒调用一次该函数。对于想控制一些触发频率较高的事件有帮助
+var count = 0;
+function print() {
+	log(count++);
+}
+
+var throttled = _.throttle(print, 1000);
+$('body').height(2000);
+$(window).scroll(throttled);
+
+	
+
+</script>
+</body>
+</html>

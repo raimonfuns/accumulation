@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+function log(value) {
+	console.log(value);
+}
+</script>
+<script src="../underscore.js"></script>	
+<script type="text/javascript">
+var obj = {};
+
+var subtract = function (a, b) {
+	console.log(this);
+	return b - a;
+}
+
+// bind可以实现，可以改变this
+var sub5 = _.bind(subtract, obj, 5);
+log(sub5(20));
+
+// partial可以实现，不过不能改变this
+var sub10 = _.partial(subtract, 10);
+log(sub10(20));
+
+// partial支持占位符
+var subFrom20 = _.partial(subtract, _, 20);
+log(subFrom20(5));
+</script>	 
+</body>
+</html>

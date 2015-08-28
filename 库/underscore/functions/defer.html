@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="../underscore.js"></script>	
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var log = _.bind(console.log, console);
+</script>	 
+
+<script type="text/javascript">
+// 方法1
+setTimeout(function () { alert('deferred'); });
+log('success');
+
+// 方法2
+// _.defer(function () { alert('deferred'); });
+// log('success');
+
+</script>
+</body>
+</html>
