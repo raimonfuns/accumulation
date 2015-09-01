@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+</style>
+</head>
+<body>
+<script src="../underscore.js"></script>	
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+var log = _.bind(console.log, console);
+</script>	 
+
+<script type="text/javascript">
+var obj1 = {
+	name: 'raimon',
+	age: 24
+}
+var obj2 = {
+	age: 25
+}
+obj2.prototype = {
+	address: 'boston'
+}
+
+var result = _.extendOwn(obj1, obj2);
+log(result);
+</script>
+</body>
+</html>
