@@ -13,13 +13,35 @@ body{background: #272822; color: #A6E22E;}
 .filler{left: 50%; width: 50%; height: 100%; background: #7FE22E; border-radius: 0 100px 100px 0; opacity: 1;}
 .masker{left: 0; width: 50%; height: 100%; background: #8E4B22; border-radius: 100px 0 0 100px; opacity: 0;}
 
-.inner{opacity: 1; animation: second-half-hide 8s steps(1, end) infinite;}
-.inner2{opacity: 0; animation: second-half-show 8s steps(1, end) infinite;}
+.inner{
+	opacity: 1; 
+	animation: second-half-hide 8s steps(1, end) infinite;
+	-webkit-animation: second-half-hide 8s steps(1, end) infinite;
+	-moz-animation: second-half-hide 8s steps(1, end) infinite;
+}
+.inner2{
+	opacity: 0; 
+	animation: second-half-show 8s steps(1, end) infinite;
+	-webkit-animation: second-half-show 8s steps(1, end) infinite;
+	-moz-animation: second-half-show 8s steps(1, end) infinite;
+}
 
 .inner{background: #8E4B22;}
-.spiner{animation: spin 4s infinite linear; transform-origin: right center;}
-.filler{animation: second-half-hide 4s steps(1, end) infinite;}
-.masker{animation: second-half-show 4s steps(1, end) infinite;}
+.spiner{
+	animation: spin 4s infinite linear; transform-origin: right center;
+	-webkit-animation: spin 4s infinite linear; transform-origin: right center;
+	-moz-animation: spin 4s infinite linear; transform-origin: right center;
+}
+.filler{
+	animation: second-half-hide 4s steps(1, end) infinite;
+	-webkit-animation: second-half-hide 4s steps(1, end) infinite;
+	-moz-animation: second-half-hide 4s steps(1, end) infinite;
+}
+.masker{
+	animation: second-half-show 4s steps(1, end) infinite;
+	-webkit-animation: second-half-show 4s steps(1, end) infinite;
+	-moz-animation: second-half-show 4s steps(1, end) infinite;
+}
 
 .inner2{background: #7FE22E;}
 .inner2 .spiner{background: #8E4B22;}
