@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+	@keyframes circle-draw {
+		0%	{stroke-dashoffset: 1068;}
+	}
+	.circle-animate{
+		transform-origin: 50% 50%;
+		transform: rotate(-90deg);
+		stroke-dasharray: 1068;
+		animation: circle-draw 2s .4s cubic-bezier(0.215,.61,.355,1);
+		animation-fill-mode: backwards;
+	}
+</style>
+</head>
+<body>
+	<svg width="440" height="440">
+		<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
+		<circle class="circle-animate" cx="220" cy="220" r="170" stroke-width="50" stroke="#00A5E0" fill="none">
+		</circle>
+	</svg>
+	<br>
+<script type="text/javascript">
+	function initCircle(value) {
+		var circle = document.querySelectorAll('circle')[1];
+		var animate = document.querySelector('animate');
+
+		var percent = value / 100, perimeter = Math.PI * 2 * 170;
+		circle.setAttribute('stroke-dashoffset', perimeter * (1 - percent));
+	}
+	// animate最好延时，因为animate从页面渲染的时候就开始执行，而初始化函数是之后才执行
+	initCircle(50);	
+		
+	
+</script>
+</body>
+</html>

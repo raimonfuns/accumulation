@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822;}
+</style>
+</head>
+<body>
+	<svg id="svgForStroke" width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+		<g>
+			<line fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="null" stroke-dashoffset="null" x1="0" y1="90" x2="400" y2="90"></line>
+		</g>
+	</svg>
+	<br>
+	<input id="rangeDasharray" type="range" min="0" max="400" value="0" size="30">
+	<br>
+	<input id="rangeDashoffset" type="range" min="0" max="400" value="0" size="30">
+
+<script type="text/javascript">
+	var svgForStroke = document.querySelector('#svgForStroke');
+	var rangeDasharray = document.querySelector('#rangeDasharray');
+	var rangeDashoffset = document.querySelector('#rangeDashoffset'); 
+	rangeDasharray.onchange = function () {
+		svgForStroke.setAttribute('stroke-dasharray', this.value);
+	}
+	rangeDashoffset.onchange = function () {
+		svgForStroke.setAttribute('stroke-dashoffset', this.value);
+	}
+</script>
+</body>
+</html>
