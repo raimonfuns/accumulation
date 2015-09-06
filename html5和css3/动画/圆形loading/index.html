@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body{background: #272822; color: #A6E22E;}
+.container{position: relative;}
+.inner, .inner2{width: 200px; height: 200px; border-radius: 50%; overflow: hidden; position: absolute;}
+.inner div,
+.inner2 div{position: absolute;}
+.spiner{left: 0; width: 50%; height: 100%; background: #7FE22E; border-radius: 100px 0 0 100px;}
+.filler{left: 50%; width: 50%; height: 100%; background: #7FE22E; border-radius: 0 100px 100px 0; opacity: 1;}
+.masker{left: 0; width: 50%; height: 100%; background: #8E4B22; border-radius: 100px 0 0 100px; opacity: 0;}
+
+.inner{
+	opacity: 1; 
+	animation: second-half-hide 8s steps(1, end) infinite;
+	-webkit-animation: second-half-hide 8s steps(1, end) infinite;
+	-moz-animation: second-half-hide 8s steps(1, end) infinite;
+}
+.inner2{
+	opacity: 0; 
+	animation: second-half-show 8s steps(1, end) infinite;
+	-webkit-animation: second-half-show 8s steps(1, end) infinite;
+	-moz-animation: second-half-show 8s steps(1, end) infinite;
+}
+
+.inner{background: #8E4B22;}
+.spiner{
+	animation: spin 4s infinite linear; transform-origin: right center;
+	-webkit-animation: spin 4s infinite linear; transform-origin: right center;
+	-moz-animation: spin 4s infinite linear; transform-origin: right center;
+}
+.filler{
+	animation: second-half-hide 4s steps(1, end) infinite;
+	-webkit-animation: second-half-hide 4s steps(1, end) infinite;
+	-moz-animation: second-half-hide 4s steps(1, end) infinite;
+}
+.masker{
+	animation: second-half-show 4s steps(1, end) infinite;
+	-webkit-animation: second-half-show 4s steps(1, end) infinite;
+	-moz-animation: second-half-show 4s steps(1, end) infinite;
+}
+
+.inner2{background: #7FE22E;}
+.inner2 .spiner{background: #8E4B22;}
+.inner2 .filler{background: #8E4B22;}
+.inner2 .masker{background: #7FE22E;}
+
+@keyframes spin {
+	0%		{ transform: rotate(360deg); }
+	100% 	{ transform: rotate(0); }
+}
+
+@keyframes second-half-hide {
+	0%			{ opacity: 1; }
+	50%, 100%	{ opacity: 0; }
+}
+
+@keyframes second-half-show {
+	0%			{ opacity: 0; }
+	50%, 100%	{ opacity: 1; }			
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="inner">
+		<div class="spiner"></div>
+		<div class="filler"></div>
+		<div class="masker"></div>
+	</div>
+	<div class="inner2">
+		<div class="spiner"></div>
+		<div class="filler"></div>
+		<div class="masker"></div>
+	</div>
+</div>
+	
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
