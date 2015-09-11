@@ -1,0 +1,41 @@
+				{{if pages.length>1}}
+		            <div class="paging">
+		            	{{if p>1}}
+						<a id="prev" href="javascript:;">上一页</a>
+						{{/if}}
+						{{if pages.length<=max}}
+							{{each pages as val key}}
+							<a class="pag{{if p==val}} curr{{/if}}" href="javascript:;">{{val}}</a>
+							{{/each}}
+						{{else}}
+							{{if p>=pages.length-mid}}
+								<a class="pag{{if p==1}} curr{{/if}}" href="javascript:;">1</a>
+								<span>...</span>
+								{{each rell as val key}}
+									<a class="pag{{if pages.length-val+1==p}} curr{{/if}}" href="javascript:;">{{pages.length-val+1}}</a>
+								{{/each}}
+							{{else if p<mid}}
+								{{each ell as val key}}
+									<a class="pag{{if p==val}} curr{{/if}}" href="javascript:;">{{val}}</a>
+								{{/each}}
+								<span>...</span>
+								<a class="pag{{if p==pages.length}} curr{{/if}}" href="javascript:;">{{pages.length}}</a>
+							{{else}}
+								<a class="pag" href="javascript:;">1</a>
+								<span>...</span>
+								{{each rellPart as val key}}
+									<a class="pag" href="javascript:;">{{p-val}}</a>
+								{{/each}}
+								<a class="pag curr" href="javascript:;">{{p}}</a>
+								{{each ellPart as val key}}
+									<a class="pag" href="javascript:;">{{p+val}}</a>
+								{{/each}} 
+								<span>...</span>
+								<a class="pag{{if p==pages.length}} curr{{/if}}" href="javascript:;">{{pages.length}}</a>
+							{{/if}}
+						{{/if}}
+						{{if p<pages.length}}
+						<a id="next" href="javascript:;">下一页</a>
+						{{/if}}
+					</div>
+		        {{/if}}

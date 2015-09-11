@@ -1,0 +1,51 @@
+
+/*清除浮动*/
+.cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; } 
+.cl { zoom: 1; }
+.clear {clear:both;display:inline;}
+
+/*显示隐藏*/
+.show{display:block;} 
+.hide{display:none;}
+
+/*左右浮动*/
+.fl,.z{float:left;}
+.fr,.y{float:right;}
+
+/*字体抗锯齿*/
+.thin {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+
+/*单行文字超出显示省略号*/
+.ell {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+/*较宽的按钮*/
+.button{
+	background: transparent url($button_url) no-repeat 0 0;
+	width: 87px;
+	height: 31px;
+	line-height: 31px;
+	text-align: center;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	color: $button_color;
+	font-size: 14px;
+	&:hover,&:active{
+		background-position:  0 -43px;
+	}
+	/*较窄的按钮*/
+	&.button-short{
+		background-position: -118px 0;
+		width: 67px;
+		height: 30px;
+		line-height: 30px;
+		&:hover,&:active{
+			background-position: -118px -43px;
+		}
+		&.disable{
+			color: $button_disable_color;
+			background-position: -118px -86px;
+		}
+	}
+}
+

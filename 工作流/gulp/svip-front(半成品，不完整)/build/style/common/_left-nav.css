@@ -1,0 +1,59 @@
+.nav-icon {
+  position: absolute;
+  *top: 0;
+  display: block;
+  margin-left: -30px;
+  margin-top: 8px;
+  background: transparent url("http://file.do.yy.com/group3/M02/5C/3A/tz0MYFXakt-AW7IUAAAJpQu0T38188.png") no-repeat 0 0;
+  width: 19px;
+  height: 23px;
+}
+.nav-icon.nav-icon-pc {
+  background-position: -70px -13px;
+}
+.nav-icon.nav-icon-rec {
+  background-position: -70px -49px;
+}
+.nav-icon.nav-icon-pri {
+  background-position: -70px -88px;
+}
+.nav-icon.nav-icon-task {
+  background-position: -70px -129px;
+}
+.left-nav {
+  background: #fff;
+  margin-top: 30px;
+}
+.left-nav li {
+  *position: relative;
+  height: 40px;
+  line-height: 40px;
+  border-left: 4px solid #fff;
+  font-size: 14px;
+}
+.left-nav li p {
+  width: 60px;
+  margin: 0 auto;
+}
+.left-nav li a {
+  color: #626262;
+}
+.left-nav li.current {
+  border-left: 4px solid #ffd952;
+  background: transparent url("http://file.do.yy.com/group3/M02/5C/3A/tz0MYFXakvSAWZGUAAAEQEmiDtE647.png") repeat;
+}
+.left-nav li.current a {
+  color: #82570a;
+}
+.left-nav li.current .nav-icon-pc {
+  background-position: -28px -13px;
+}
+.left-nav li.current .nav-icon-rec {
+  background-position: -28px -49px;
+}
+.left-nav li.current .nav-icon-pri {
+  background-position: -28px -88px;
+}
+.left-nav li.current .nav-icon-task {
+  background-position: -28px -129px;
+}

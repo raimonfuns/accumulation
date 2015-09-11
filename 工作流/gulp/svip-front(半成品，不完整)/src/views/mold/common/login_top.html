@@ -1,0 +1,12 @@
+				{{if result}}
+		            <div class="top-login fr">
+		                <span>欢迎您，{{data.nick||data.passport}}</span>
+		                <a class="sign-out" href="javascript:;" onclick="udbLogout()">退出</a>
+		            </div>
+		        {{else}} 
+		        	<div class="top-login fr">
+		                <span>欢迎来到YY金钻</span>
+		                <a class="login-btn" href="javascript:;" onclick="showUdbLogin()">登录</a>
+		                <a class="register-btn" href="http://udb.yy.com/register.do" target="_blank">注册</a>
+		            </div>
+		        {{/if}}

@@ -1,0 +1,89 @@
+{{%set navIndex = 1%}}
+{{% extends '../../base.tpl' %}}
+
+{{% block title %}}尊贵排行-{{% endblock %}}
+
+{{% block head %}}
+<link href="/style/logic/rank/index.css" rel="stylesheet">
+{{% endblock %}}
+
+{{% block main %}}
+	<div class="container cl">
+		<div class="block-row cl">
+			<div class="slide-box fl" id="ad-slide">
+				<ul class="slide-list">
+					<li><a href="javascript:;"><img src="http://vipweb.bs2.yy.com/7af924240e6a903d73d8b51e28fad104.jpg" alt=""></a></li>
+					<li><a href="javascript:;"><img src="http://dl3.vip.yystatic.com/yyvippicture/7bb7b9610fba07f4375071241692c5a5.jpg" alt=""></a></li>
+					<li><a href="javascript:;"><img src="http://vipweb.bs2.yy.com/c89230c84aec41906cf6643191f7e1f2.png" alt=""></a></li>
+				</ul>
+				<ul class="slide-btn">
+					<li class="curr"></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div> 
+			<!-- 登录模块通用，改叫login-box -->
+			<div class="login-box fr">
+				
+			</div>
+		</div>
+		<div class="rankListWrap cl">
+			<div id="allListMod" class="rankListMod fl">
+				<h2 class="title">尊贵席位</h2>
+				<ul class="rankList">
+					
+				</ul>
+				<ul class="rankList">
+					
+				</ul>
+				<div class="btnWrap">
+					<a class="icon-btn icon-btn-prev dib btn-active" href="javascript:;"></a>
+					<a class="icon-btn icon-btn-next dib" href="javascript:;"></a>
+				</div>
+			</div>
+			<div id="monthListMod" class="rankListMod fr">
+				<h2 class="title">本月贡献</h2>
+				<ul class="rankList">
+					
+				</ul>
+				<ul class="rankList">
+					
+				</ul>
+				<div class="btnWrap">
+					<a class="icon-btn icon-btn-prev dib btn-active" href="javascript:;"></a>
+					<a class="icon-btn icon-btn-next dib" href="javascript:;"></a>
+				</div>
+			</div>
+		</div>
+		<div class="onTheListWrap">
+			<h2 class="title">我要上榜</h2>
+			<ul class="list cl">
+				<li>
+					<span class="ListIcon icon-onList-1 dib"></span>
+					<p class="dib">升级身份</p>
+				</li>
+				<li >
+					<span class="ListIcon icon-onList-2 dib"></span>
+					<p class="dib">领取身份</p>
+				</li>
+				<li class="last">
+					<span class="ListIcon icon-onList-3 dib"></span>
+					<p class="dib">参与活动</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+{{% endblock %}} 
+
+{{% block footer %}}
+
+<script>
+    seajs.config({
+        map : [
+            [ /^(.*\.(?:js))(.*)$/i, '$1?_=20140620']
+        ],
+        base:'/'
+    })
+    seajs.use(['/script/logic/rank/index']);
+</script>
+{{% endblock %}}

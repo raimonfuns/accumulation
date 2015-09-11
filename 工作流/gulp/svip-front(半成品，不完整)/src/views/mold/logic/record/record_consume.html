@@ -1,0 +1,10 @@
+	{{if result}}
+		{{each data.list as val key}}
+		<tr class="table-row consume-tr">
+			<td>{{val.time}}</td>
+			<td>{{val.content}}</td>
+			<td>￥ {{val.money}}</td>
+		</tr>
+		{{/each}}
+	{{/if}}
+ 

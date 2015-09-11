@@ -1,0 +1,78 @@
+		
+		    <div class="login-piece">
+		    	<div class="login-msg-box">
+		    	{{if result}}
+					<div class="user-msg-box{{if !data.info.svip}} user-pb{{/if}}">
+						<div class="user-info cl">
+							<div class="user-photo fl"><img src="http://file.do.yy.com/group3/M03/5C/01/tz0MYFW6_dOAaWXyAAAZBmDvZn4427.png" alt=""></div>
+							<dl class="user-name fl">
+								<dt class="ell">{{data.nick||data.passport}}</dt>
+								<dd>
+									{{if data.info.svip}}
+										{{if data.info.svipLevel.level_id<=3}}
+										<i class="svip-icon grade-01"></i>
+										{{else if data.info.svipLevel.level_id>3&&data.info.svipLevel.level_id>=6}}
+										<i class="svip-icon grade-02"></i>
+										{{else if data.info.svipLevel.level_id>6&&data.info.svipLevel.level_id>=12}}
+										<i class="svip-icon grade-03"></i>
+										{{else if data.info.svipLevel.level_id>12&&data.info.svipLevel.level_id>=19}}
+										<i class="svip-icon grade-04"></i>
+										{{else if data.info.svipLevel.level_id>19&&data.info.svipLevel.level_id>=24}}
+										<i class="svip-icon grade-05"></i>
+										{{else if data.info.svipLevel.level_id>=25}}
+										<i class="svip-icon grade-06"></i>
+										{{/if}}
+									{{/if}}
+								</dd>
+							</dl>
+							<a class="user-logout" href="javascript:;" onclick="udbLogout()">退出</a>
+						</div>
+					{{if data.info.svip}}
+						<dl class="svip-card{{if data.info.svipLevel.level_id<=3}} scard-01{{else if data.info.svipLevel.level_id>3&&data.info.svipLevel.level_id>=6}} scard-02{{else if data.info.svipLevel.level_id>6&&data.info.svipLevel.level_id>=12}} scard-03{{else if data.info.svipLevel.level_id>12&&data.info.svipLevel.level_id>=19}} scard-04{{else if data.info.svipLevel.level_id>19&&data.info.svipLevel.level_id>=24}} scard-05{{else if data.info.svipLevel.level_id>=25}} scard-06{{/if}}">
+							<dt>{{data.info.svipStage.name}} · LV{{data.info.svipLevel.level_id}}</dt>
+							<dd>
+								<span>贡献：{{data.info.contributionValue}}</span><span>排名：{{data.info.rank}}</span>
+							</dd>
+						</dl>
+						<div class="login-desc-box">
+							<p>离下次会员{{data.info.nextSVipStage.name}} 还需<span>{{data.info.needContributionValue4NextStage}}</span>个贡献值</p>
+							<p>到期日期：{{data.info.expiredDate}}</p>
+						</div>
+					{{else}}
+						<div class="login-desc-box">超级会员尊享身份特权，一卡在手，特权全掌握。</div>
+					{{/if}} 
+					</div>
+				
+				{{else}} 
+		    		<div class="un-reg-box">
+			    		<div class="un-reg-msg cl">
+			    			<span class="un-reg-icon fl"></span>
+			    			<a class="login-click fl" href="javascript:;" onclick="showUdbLogin()">登录</a>
+			    			<a class="more fl" href="javascript:;">查看更多信息</a>
+			    		</div>
+			    		<div class="login-desc-box">超级会员尊享身份特权，一卡在手，特权全掌握。</div>
+		    		</div>
+		    	{{/if}}
+		    	</div>
+		    	<div class="login-btn-box">
+		    	{{if result}}
+		    		{{if data.info.svip}}
+					<a class="upgrade-iden" href="javascript:;">
+		    			<i></i><span>升级尊贵身份</span>
+		    		</a>
+		    		{{else}}
+		    		<a class="join-svip" href="javascript:;">
+		    			<i></i><span>加入金钻</span>
+		    		</a>
+		    		{{/if}}
+				{{else}} 
+		    		<a class="join-svip" href="javascript:;">
+		    			<i></i><span>加入金钻</span>
+		    		</a>
+		    		<a class="upgrade-iden" href="javascript:;">
+		    			<i></i><span>升级尊贵身份</span>
+		    		</a>
+		    	{{/if}} 
+		    	</div>
+		    </div>
+		

@@ -1,0 +1,92 @@
+{{%set navIndex = 2%}}
+{{% extends '../../base.tpl' %}}
+
+{{% block title %}}金钻会员-{{% endblock %}}
+
+{{% block head %}}
+<link href="/style/logic/showprivi/showprivi.css" rel="stylesheet">
+{{% endblock %}}
+
+{{% block main %}}
+
+<div class="sp-body">
+	<div class="main">
+		<div class="block identity-box">
+			<dl class="text-dl identity-dl">
+				<dt class="dt-01">身份特权</dt>
+				<dd>
+					<div class="desc">
+						<p>不要默默无闻,要身份的彰显</p>
+						<p>我是土豪！</p>
+					</div>
+					<div class="more"><a href="javascript:;">了解更多 ></a></div>
+					<div class="login-box"></div>
+				</dd>
+			</dl>
+			<div class="icon-box">
+				<div class="center-icon center-01"></div>
+				<div class="revolve-icon iden-01"></div>
+				<div class="revolve-icon iden-02"></div>
+				<div class="revolve-icon iden-03"></div>
+				<div class="revolve-icon iden-04"></div>
+				<div class="revolve-icon iden-05"></div>
+				<div class="revolve-icon iden-06"></div>
+				<div class="revolve-icon iden-07"></div>
+				<div class="revolve-icon iden-08"></div>
+			</div>
+		</div>
+
+		<div class="block addition-box">
+			<dl class="text-dl addition-dl">
+				<dt class="dt-02">加成特权</dt>
+				<dd>
+					<div class="desc">
+						<p>不仅仅是展示,拥有高级加成</p>
+						<p>我是至尊王者</p>
+					</div>
+					<div class="more"><a href="javascript:;">了解更多 ></a></div>
+				</dd>
+			</dl>
+			<div class="icon-box">
+				<div class="center-icon center-02"></div>
+				<div class="revolve-icon add-01"></div>
+				<div class="revolve-icon add-02"></div>
+				<div class="revolve-icon add-03"></div>
+				<div class="revolve-icon add-04"></div>
+			</div>
+		</div>
+
+		<div class="block interact-box">
+			<dl class="text-dl interact-dl">
+				<dt class="dt-03">互动特权</dt>
+				<dd>
+					<div class="desc">
+						<p>不需孤花自赏,大家一起享受</p>
+						<p>我是YY达人</p>
+					</div>
+					<div class="more"><a href="javascript:;">了解更多 ></a></div>
+				</dd>
+			</dl>
+			<div class="icon-box">
+				<div class="center-icon center-03"></div>
+				<div class="revolve-icon int-01"></div>
+				<div class="revolve-icon int-02"></div>
+				<div class="revolve-icon int-03"></div>
+				<div class="revolve-icon int-04"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{% endblock %}}
+{{% block footer %}}
+<script>
+    seajs.config({
+        map : [
+            [ /^(.*\.(?:js))(.*)$/i, '$1?_=20140620']
+        ],
+        base:"/"
+    })
+    seajs.use(['script/logic/showprivi/showprivi']);
+</script>
+{{% endblock %}}

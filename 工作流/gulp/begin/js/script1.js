@@ -1,0 +1,1 @@
+document.getElementById('title1').innerHTML = 'script1 code';

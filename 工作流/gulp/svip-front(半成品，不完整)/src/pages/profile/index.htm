@@ -1,0 +1,152 @@
+{{%set navIndex = 3%}}
+{{% extends '../../base.tpl' %}}
+
+{{% block title %}}个人财富-{{% endblock %}}
+
+{{% block head %}}
+<link href="/style/logic/profile/index.css" rel="stylesheet">
+{{% endblock %}}
+
+{{% block main %}}
+	<div class="container cl">
+		<div class="sideBar fl">
+			<div class="login-box"></div>
+			<div class="privilege-nav-box">
+				{{% set leftNav = 0%}}
+				{{% include '../../views/tpl/common/left_nav.tpl' with leftNav %}}
+			</div>
+		</div>
+		<div class="main fr">
+			<div class="infoWrap">
+				<h2 class="title">基本信息</h2>
+				<ul class="infoList cl">
+					<li class="contribution"><strong class="infoNumber"></strong><span class="infoDesc">贡献值</span></li>
+					<li class="rank"><strong class="infoNumber"></strong><span class="infoDesc">全网排名</span></li>
+					<li class="growthValue"><strong class="infoNumber"></strong><span class="infoDesc">每日成长值加成</span></li>
+					<li class="nextLevel"><strong class="infoNumber"></strong><span class="infoDesc">距下一级还需贡献值</span></li>
+					<li class="silver last"><strong class="infoNumber"></strong><span class="infoDesc"></span></li>
+				</ul>
+				<div class="graphWrap">
+					<div class="line">
+						<div class="triangleBox goldColor">
+							<span id="vipLevel"></span>
+							<div class="triangle"></div>
+						</div>
+					</div>
+					<ul class="vipLevel cl">
+						<li class="mr1">vip1</li>
+						<li class="mr2">vip4</li>
+						<li class="mr3">vip7</li>
+						<li class="mr4">vip13</li>
+						<li class="mr5">vip20</li>
+						<li class="mr6">vip25</li>
+					</ul>
+					<ul class="vipLevelText cl">
+						<li class="mrText1">银卡</li>
+						<li class="mrText2">至尊银卡</li>
+						<li class="mrText3">金卡</li>
+						<li class="mrText4">至尊金卡</li>
+						<li class="mrText5">白金卡</li>
+						<li class="mrText6">紫金卡</li>
+					</ul>
+				</div>
+				<ul class="timeAndContrib cl">
+					<li>
+						<span class="fl icon icon-time"></span>
+						<div class="content fl">
+							<p class="text">到期时间<strong class="expiredDate"></strong></p>
+							<p class="text">（本月最低消费：<span id="consumeLimit"></span>）</p>
+						</div>
+					</li>
+					<li class="last">
+						<span class="fl icon icon-contrib"></span>
+						<div class="content fl">
+							<p class="text contribText">本月贡献值<strong class="monthContrib"></strong></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="news-consumeWrap cl">
+				<div class="tablewrap fl">
+					<div class="headerMod cl">
+						<h2 class="title fl">最新消息</h2>
+						<a class="more fr" href="/pages/record/index.html" target="_blank">更多</a>
+					</div>
+					<table class="table">
+						<thead>
+							<th>时间</th>
+							<th>消息</th>
+						</thead>
+						<tbody id="msgListWrap">
+
+						</tbody>
+					</table>	
+				</div>
+				<div class="tablewrap fr">
+					<div class="headerMod cl">
+						<h2 class="title fl">最新消费</h2>
+						<a class="more fr" href="/pages/record/index.html" target="_blank">更多</a>
+					</div>
+					<table class="table">
+						<thead>
+							<th>时间</th>
+							<th>消费项目</th>
+							<th>金额</th>
+						</thead>
+						<tbody id="payListWrap">
+
+						</tbody>
+					</table>	
+				</div>
+			</div>
+			<div class="taskWrap">
+				<div class="headerMod cl">
+					<h2 class="title fl">最新任务</h2>
+					<a class="more fr" href="/pages/record/index.html" target="_blank">更多</a>
+				</div>
+				<ul class="taskList cl">
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+{{% endblock %}} 
+
+{{% block footer %}}
+
+<script type="text/html" id="tplTaskList">
+	{{ each list as v idx }}
+		{{ if idx <= 2 }}
+			<li {{ if idx == 2 }}class="last"{{ /if }}>
+				<a href="#">
+					<img src="http://file.do.yy.com/group3/M00/5C/3E/tz0GSFXavTaALldPAACn5vKzgAc943.png" width="218" height="148" alt="撑场任务">
+				</a>
+				<div class="taskInfo">
+					<div class="taskInfoContent">
+						<p class="taskTitle">撑场任务</p>
+						<p>撑场频道：{{ v.sid }}</p>
+						<p>撑场时间：{{ v.beginTime }}</p>
+						<p>发起人：{{ v.publishImid }}</p>
+						<p>贡献值奖励：<span class="contribNum">{{ v.award }}</span></p>
+					</div>
+				</div>
+				<div class="mask"></div>
+				<div class="bottomWrap cl">
+					<h3 class="taskTitle fl">{{ v.taskTitle }}</h3>
+					<a href="javascript:;" class="acceptTaskBtn button mr10 fr" data-task-id="{{ v.taskId }}">领取任务</a>
+				</div>
+			</li>
+		{{ /if }}
+	{{ /each }}
+</script>
+
+<script>
+    seajs.config({
+        map : [
+            [ /^(.*\.(?:js))(.*)$/i, '$1?_=20140620']
+        ],
+        base:'/'
+    })
+    seajs.use(['/script/logic/profile/index']);
+</script>
+{{% endblock %}}

@@ -1,0 +1,357 @@
+{{%set navIndex = 2%}}
+{{% extends '../../base.tpl' %}}
+
+{{% block title %}}金钻会员-{{% endblock %}}
+
+{{% block head %}}
+<link href="/style/logic/privilege/myprivilege.css" rel="stylesheet">
+{{% endblock %}}
+
+{{% block main %}}
+
+<div class="privilege-main">
+	<div class="fl">
+		<div class="login-box">
+		</div>
+		<div class="privilege-nav-box">
+			{{% set leftNav = 2%}}
+			{{% include '../../views/tpl/common/left_nav.tpl' with leftNav %}}
+		</div>
+	</div>
+	<div class="fr">
+		<!-- {{% set datePickId = 'dtPicker'%}}
+		{{% include '../../views/tpl/common/datepick.tpl' with datePickId %}} -->
+		<div class="pri-box pri-box1">
+			<h1>阶段特权</h1>
+			<div class="pri-content-wrap current-svip-stage-wrap">
+				<table class="pri-content-table">
+					<tbody>
+						<tr>
+							<td class="td-large">当前级别<span class="td-value" id="current-grade-desc">暂无</span></td>
+							<td rowspan="2"><strong>暂无</strong>成长值加成</td>
+							<td rowspan="2"><strong>暂无</strong>积分加成</td>
+							<td rowspan="2"><strong>暂无</strong>靓号加成</td>
+							<td rowspan="2"><strong>暂无</strong>至尊VIP特权</td>
+							<td rowspan="2"><strong>暂无</strong>V卡折扣</td>
+						</tr>
+						<tr>
+							<td class="td-large"><span class="td-label">距离<span id="next-grade-desc">下一等级</span>还需要贡献值</span><span class="td-value" id="next-grade-left">暂无</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pri-box pri-box2">
+			<h1>下一阶段特权</h1>
+			<div class="pri-content-wrap next-svip-stage-wrap">
+				<table class="pri-content-table">
+					<tbody>
+						<tr>
+							<td>
+								<i class="pri-icon pri-icon-growth"></i>
+								<span>成长值开启</span>
+							</td>
+							<td>
+								<i class="pri-icon pri-icon-vcard"></i>
+								<span>V卡折扣购买</span>
+							</td>
+							<td>
+								<i class="pri-icon pri-icon-yyliang"></i>
+								<span>靓号领取</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pri-box pri-box3">
+			<div class="pri-box-header">
+				<h1>频道推荐设置</h1>
+				<a href="javascript:;" id="channelHistory">推荐历史</a>
+			</div>
+			<div class="pri-content-wrap pri-channel-content-wrap" data-height="450px">
+				<table class="pri-content-table">
+					<thead>
+						<th>频道</th>
+						<th>推广时间设置</th>
+						<th>操作</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<span class="pri-channel-select">频道选择</span>
+								<a class="pri-updown-icon down" href="javascript:;"></a>
+							</td>
+							<td>
+								{{% set datePickId = 'channelTime'%}}
+								{{% include '../../views/tpl/common/datepick.tpl' with datePickId %}}
+							</td>
+							<td>
+								<a href="javascript:;" class="button button-short pri-channel-ok">推广</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pri-select-channel-wrap">
+					<div class="pri-select-container first-container">
+						<label class="fl">频道号</label>
+						<div class="fl pri-input-wrap short">
+							<input type="text" id="channelSid">
+						</div>
+					</div>
+					<div class="pri-select-container">
+						<label class="fl">子频道</label>
+						<div class="fl pri-input-wrap short">
+							<input type="text" id="channelSSid">
+						</div>
+					</div>
+					<div class="pri-select-container">
+						<label class="fl">主播YY号</label>
+						<div class="fl pri-input-wrap short">
+							<input type="text" id="channelImid">
+						</div>
+					</div>
+					<div class="pri-select-container">
+						<label class="fl">推荐标题</label>
+						<div class="fl pri-input-wrap">
+							<input type="text" id="channelTitle">
+						</div>
+						<span class="fl pri-input-desc">标题不超过30个字符</span>
+					</div>
+					<div class="pri-select-container">
+						<label class="fl">图片展示</label>
+						<div class="fl pri-upload-wrap">
+							<p class="pri-upload-title">尺寸：180*195px</p>
+							<div class="pri-upload-img-container">
+								<form action="/service/web/wonder/imgupload" id="imgUploadForm" method="post" enctype="multipart/form-data" target="uploadIFrame">
+									<input type="hidden" name="callback" value="uploadHandler">
+									<div class="button">
+										<span>上传图片</span>
+										<input type="file" name="file" id="uploadImgBtn">
+									</div>
+									<p>(50k以内jpg、png图片)</p>
+								</form>
+								<div class="pre-image-container">
+									<img src="" id="uploadImage">
+									<i class="pri-img-close-icon"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="fl pri-left-desc-wrap">
+						<span class="start-icon">*</span>收藏频道
+					</div>
+					<div class="fl">
+						<div class="pri-channel-wrap">
+							<span class="pri-channel-name"></span>
+							<a href="javascript:;" class="pri-updown-gray-icon down"></a>
+						</div>
+						<div class="pri-channel-list-wrap channel-list-wrap">
+							<div class="fl pri-channel-list">
+							</div>
+							<div class="fl pri-subchannel-list">
+							</div>
+						</div>
+						<p class="pri-right-desc">如无收藏频道，可直接粘贴飞机票</p>
+						<div class="pri-ticket-wrapper">
+							<input type="text" id="channelTicket">
+						</div>
+					</div>
+					<!-- 频道推荐标题跟图片上传 -->
+					<!--<div class="fl pri-upload-wrap">
+						<div class="fl upload-title">
+							<span class="start-icon">*</span>推荐标题
+						</div>
+						<div class="fl upload-content">
+							<div class="fl pri-ticket-wrapper">
+								<input type="text" id="channelTitle">
+							</div>
+							<span class="fl upload-desc">标题不超过30个字符</span>
+						</div>
+						<div class="fl upload-title">
+							<span class="start-icon">*</span>展示图片
+						</div>
+						<div class="fl upload-content">
+							<p>尺寸：180*195px</p>
+							<div class="upload-img-container">
+								<form action="/service/web/wonder/imgupload" id="imgUploadForm" method="post" enctype="multipart/form-data" target="uploadIFrame">
+									<input type="hidden" name="callback" value="uploadHandler">
+									<div class="button">
+										<span>上传图片</span>
+										<input type="file" name="file" id="uploadImgBtn">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<iframe name="uploadIFrame" id="uploadIFrame" style="display:none;"></iframe>
+		<div class="pri-box pri-box4">
+			<div class="pri-box-header">
+				<h1>撑场特权设置</h1>
+				<a href="javascript:;" id="supportHistory">撑场历史</a>
+			</div>
+			<div class="pri-content-wrap pri-support-content-wrap"  data-height="140px">
+				<table class="pri-content-table">
+					<thead>
+						<th>频道选择</th>
+						<th>撑场时间设置</th>
+						<th>操作</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<span class="pri-support-select">频道选择</span>
+								<a class="pri-updown-icon down" href="javascript:;"></a>
+							</td>
+							<td>
+								{{% set datePickId = 'supportTime'%}}
+								{{% include '../../views/tpl/common/datepick.tpl' with datePickId %}}
+								<div class="ui-datepicker-wrapper">
+									<input type="text" id="supportTimeTail" placeholder="12:00:00">
+								</div>
+							</td>
+							<td>
+								<a href="javascript:;" class="button button-short pri-support-ok">确定</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pri-select-channel-wrap">
+					<div class="pri-select-container first-container">
+						<label class="fl">频道号</label>
+						<div class="fl pri-input-wrap short">
+							<input type="text" id="channelSid">
+						</div>
+					</div>
+					<div class="pri-select-container">
+						<label class="fl">子频道</label>
+						<div class="fl pri-input-wrap short">
+							<input type="text" id="channelSSid">
+						</div>
+					</div>
+					<!-- <div class="fl pri-left-desc-wrap">
+						<span class="start-icon">*</span>收藏频道
+					</div>
+					<div class="fl">
+						<div class="pri-channel-wrap">
+							<span class="pri-channel-name"></span>
+							<a href="javascript:;" class="pri-updown-gray-icon down"></a>
+						</div>
+						<div class="pri-channel-list-wrap support-channel-list-wrap">
+							<div class="fl pri-channel-list">
+							</div>
+							<div class="fl pri-subchannel-list">
+							</div>
+						</div>
+						<p class="pri-right-desc">如无收藏频道，可直接粘贴飞机票</p>
+						<div class="pri-ticket-wrapper">
+							<input type="text" id="supportTicket">
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="pri-box pri-box5">
+			<div class="pri-box-header">
+				<h1>特权领取</h1>
+				<a href="javascript:;">领取记录</a>
+			</div>
+			<div class="pri-content-wrap pri-draw-content-wrap">
+				<table class="pri-content-table">
+					<tbody>
+						<tr>
+							<td>
+								<i class="pri-icon pri-icon-yyliang"></i>
+								<p>YY靓号</p>
+								<a href="javascript:;" class="button button-short" data-pid="1">领取</a>
+							</td>
+							<td>
+								<i class="pri-icon pri-icon-qunliang"></i>
+								<p>群靓号</p>
+								<a href="javascript:;" class="button button-short" data-pid="2">领取</a>
+							</td>
+							<td>
+								<i class="pri-icon pri-icon-channel"></i>
+								<p>频道靓号</p>
+								<a href="javascript:;" class="button button-short" data-pid="3">领取</a>
+							</td>
+							<td>
+								<i class="pri-icon pri-icon-up"></i>
+								<p>置顶卡</p>
+								<a href="javascript:;" class="button button-short" data-pid="4">领取</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+	<div class="cl"></div>
+</div>
+
+<script type="text/html" id="svipStageTpl">
+	<table class="pri-content-table">
+		<tbody>
+			<tr>
+				<td class="td-large">当前级别<span class="td-value" id="current-grade-desc">{{svip?svipStage.name:'暂无'}}</span></td>
+				<td rowspan="2"><strong>{{getPrivilegeValue(1,privileges)}}</strong>成长值加成</td>
+				<td rowspan="2"><strong>{{getPrivilegeValue(2,privileges)}}</strong>积分加成</td>
+				<td rowspan="2"><strong>{{getPrivilegeValue(3,privileges)}}</strong>靓号加成</td>
+				<td rowspan="2"><strong>{{getPrivilegeValue(6,privileges)}}</strong>至尊VIP特权</td>
+				<td rowspan="2"><strong>{{getPrivilegeValue(5,privileges)}}</strong>V卡折扣</td>
+			</tr>
+			<tr>
+				<td class="td-large"><span class="td-label">距离<span id="next-grade-desc">{{svip?nextSVipStage.name:'下一等级'}}</span>还需要贡献值</span><span class="td-value" id="next-grade-left">{{svip?needContributionValue4NextStage:'暂无'}}</span></td>
+			</tr>
+		</tbody>
+	</table>
+</script>
+<script type="text/html" id="nextGradePriTypeTpl">
+<table class="pri-content-table">
+	<tbody>
+		<tr>
+			{{each nextStagePrivilegeTypes as v i}}
+			{{if i < 3}}
+			<td>
+				<i class="pri-icon pri-icon-growth"></i>
+				<span>{{v.name}}</span>
+			</td>
+			{{/if}}
+			{{/each}}
+		</tr>
+	</tbody>
+</table>
+</script>
+<script type="text/html" id="channelTpl">
+	<ul>
+		{{each data as v i}}
+		<li {{if i==0}}class="active"{{/if}} data-name="{{v.name}}"><a href="javascript:;" data-sid="{{v.sid}}" data-name="{{v.name}}">{{v.name}}</a><i></i></li>
+		{{/each}}
+	</ul>
+</script>
+<script type="text/html" id="subchannelTpl">
+	<ul>
+		{{each data as v i}}
+		<li>
+			<a href="javascript:;" data-sid="{{v.tid}}" data-ssid="{{v.sid}}" data-name="{{v.name}}">{{v.name}}</a>
+		</li>
+		{{/each}}
+	</ul>
+</script>
+
+{{% endblock %}}
+{{% block footer %}}
+<script>
+    seajs.config({
+        map : [
+            [ /^(.*\.(?:js))(.*)$/i, '$1?_=20140620']
+        ],
+        base:"/"
+    })
+    seajs.use(['script/logic/privilege/myprivilege']);
+</script>
+{{% endblock %}}

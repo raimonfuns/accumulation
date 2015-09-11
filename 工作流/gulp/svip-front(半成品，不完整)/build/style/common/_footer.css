@@ -1,0 +1,17 @@
+/*底部*/
+.vip-footer {
+  height: 99px;
+  background: #232323;
+  padding: 30px 0 40px;
+  text-align: center;
+  color: #878787;
+  background-image: url("http://file.do.yy.com/group3/M04/5C/25/tz0GSFXMdTeAb6oXAAABGuiU1W4250.png");
+  background-repeat: repeat-x;
+}
+.vip-footer-links {
+  margin-bottom: 5px;
+}
+.vip-footer-links a {
+  margin: 0 8px;
+  color: #878787;
+}

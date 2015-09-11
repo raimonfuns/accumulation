@@ -1,0 +1,150 @@
+@import '../../common/_var.styl';
+@import '../../common/_paging.styl';
+@import '../../common/_left-nav.styl';
+.task-main {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.task-left {
+	width: 270px;
+} 
+.task-right {
+	width: 690px;
+}
+.task-content {
+
+}
+.task-content-dl {
+	&>dt {
+		font-size: 18px;
+		color: #333;
+		height: 30px;
+		line-height: 30px;
+		margin-bottom: 5px;
+	}
+	&>dd {
+		background-color: #fff;
+	}
+}
+.task-nav-box {
+	height: 48px;
+	border-top:#f7eac9 solid 1px;
+	border-left:#f7eac9 solid 1px;
+	border-right:#f7eac9 solid 1px;
+	border-bottom:#f1d181 solid 1px;
+	color: #666;
+	font-size: 16px;
+	position: relative;
+}
+.task-nav-ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 50px;
+	line-height: 50px;
+	&>li {
+		float: left;
+		padding: 0 25px;
+		cursor: pointer;
+		border-right: 1px solid #fff;
+	    border-left: 1px solid #fff;
+	    height: 48px;
+	    line-height: 50px;
+	}
+	&>.curr {
+		border:#f1d181 solid 1px;
+		background-image: url($tabBg);
+		background-repeat: repeat-x;
+		height: 48px;
+		line-height: 48px;
+		color: #82570a
+	}
+}
+
+.task-list-box {
+	
+
+}
+.task-table-box {
+	border-left:#f7eac9 solid 1px;
+	border-right:#f7eac9 solid 1px;
+	&>table {
+		width: 100%
+	}
+}
+.table-th {
+	&>th {
+		background-image: url($thBg);
+		background-repeat: repeat-x;
+		height: 39px;
+		border-bottom:#f7eac9 solid 1px;
+		color: #82570a;
+		font-size: 14px;
+	}
+}
+.table-row {
+	&>td {
+		border-bottom:#f7eac9 solid 1px;
+		color: #333;
+		font-size: 14px;
+		text-align: center;
+		height: 47px;
+		a, span {
+			color: #cdad5e;
+			cursor: pointer;
+		}
+		em {
+			width: 14px;
+			height: 9px;
+			overflow: hidden;
+			display: inline-block;
+			position: relative;
+			i {
+				border-left:transparent solid 7px;
+				border-right:transparent solid 7px;
+				display: block;
+				position: absolute;
+				left: 0;
+				top:0;
+				height: 0;
+			}
+			.dw {
+				border-top:#cecece solid 9px;
+				border-bottom:transparent;
+			}
+			.up {
+				border-top:transparent;
+				border-bottom:#cdad5e solid 9px;
+			}
+		}
+		
+			
+	}
+}
+.table-note {
+	display: none;
+	&>td {
+		border-bottom:#f7eac9 solid 1px;
+		color: #333;
+		font-size: 14px;
+		text-align: center;
+		font-size: 12px;
+		&>dl {
+			padding: 5px 30px;
+			text-align: left;
+			line-height: 20px;
+			color: #666666;
+			&>dt {
+				color: #cdad5e;
+			}
+		}
+			
+	}
+}
+
+.task-paging {
+	margin-top: 10px;
+	float: right;
+}

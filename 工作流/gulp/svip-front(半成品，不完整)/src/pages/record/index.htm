@@ -1,0 +1,130 @@
+{{%set navIndex = 0%}}
+{{% extends '../../base.tpl' %}}
+
+{{% block title %}}金钻会员-{{% endblock %}}
+
+{{% block head %}}
+<link href="/style/logic/record/record.css" rel="stylesheet">
+{{% endblock %}}
+
+{{% block main %}}
+	<div class="record-main cl">
+		<div class="record-left fl">
+			<div class="login-box"></div>
+			<div class="privilege-nav-box">
+				{{% set leftNav = 1%}}
+				{{% include '../../views/tpl/common/left_nav.tpl' with leftNav %}}
+			</div>
+		</div>
+
+		<div class="record-right fr">
+			<div class="record-content">
+				<dl class="record-content-dl">
+					<dt>消息记录</dt>
+					<dd>
+						<div class="record-nav-box">
+							<ul class="record-nav-ul">
+								<li class="curr">全部信息</li>
+								<li>贡献值消息</li>
+								<li>红包消息</li>
+								<li>任务消息</li>
+							</ul>
+						</div>
+						<div class="record-list-box">
+							<div class="record-table-box">
+								<table cellpadding="0" cellspacing="0">
+									<colgroup width="20%"></colgroup>
+									<colgroup width="60%"></colgroup>
+									<colgroup width="20%"></colgroup>
+									<tr class="table-row news-tr">
+										<td>2015.8.25 15:00</td> 
+										<td class="msg-td">上个月未完成最低消费，贡献值已下降10%，8月30日前购买复活卡可恢复贡献值并增加复活卡消费贡献值</td>
+										<td><a class="button" href="javascript:;">购买复活卡</a></td>
+									</tr>
+									<tr class="table-row news-tr">
+										<td>2015.8.25 15:00</td>
+										<td class="msg-td">在2080频道发放的3000元红包已被5000人抢完</td>
+										<td></td>
+									</tr>
+									<tr class="table-row news-tr">
+										<td>2015.8.25 15:00</td>
+										<td class="msg-td">上个月未完成最低消费，贡献值已下降10%，8月30日前购买复活卡可恢复贡献值并增加复活卡消费贡献值</td>
+										<td><a class="button" href="javascript:;">再做任务</a></td>
+									</tr>
+									<tr class="table-row news-tr">
+										<td>2015.8.25 15:00</td>
+										<td class="msg-td">在2080频道发放的3000元红包已被5000人抢完</td>
+										<td></td>
+									</tr>
+									<tr class="table-row news-tr">
+										<td>2015.8.25 15:00</td>
+										<td class="msg-td">上个月未完成最低消费，贡献值已下降10%，8月30日前购买复活卡可恢复贡献值并增加复活卡消费贡献值</td>
+										<td><a class="button" href="javascript:;">新开任务</a></td>
+									</tr>
+									<tr class="table-row news-tr">
+										<td>2015.8.25 15:00</td>
+										<td class="msg-td">在2080频道发放的3000元红包已被5000人抢完</td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</dd>
+				</dl>
+
+				<dl class="record-content-dl consume-dl">
+					<dt>消费记录</dt>
+					<dd>
+						<div class="select-date cl">
+							<div class="fl cl">
+								<span class="text-span fl">日期</span>
+								<div class="date-box fl">
+									<input id="start-date" type="text">
+								</div>
+								<span class="text-span fl">至</span>
+								<div class="date-box fl">
+									<input id="end-date" type="text">
+								</div>
+							</div>
+							<a class="button query-btn fl" id="consume-btn" href="javascript:;">开始查询</a>
+						</div>
+						<div class="record-list-box">
+							<div class="record-table-box">
+								<table id="record-table" cellpadding="0" cellspacing="0">
+									<colgroup width="20%"></colgroup>
+									<colgroup width="60%"></colgroup>
+									<colgroup width="20%"></colgroup>
+									<thead>
+										<tr class="table-th">
+											<th>时间</th>
+											<th>内容</th>
+											<th>金额</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="consume-pages"></div>
+					</dd>
+				</dl>
+
+			</div>
+		</div>
+	</div>
+{{% endblock %}} 
+  
+{{% block footer %}}
+
+<script>
+    seajs.config({
+        map : [
+            [ /^(.*\.(?:js))(.*)$/i, '$1?_=20140620']
+        ],
+        base:'/'
+    })
+    seajs.use(['/script/logic/record/record']);
+</script>
+{{% endblock %}}

@@ -1,0 +1,15 @@
+	{{if result}}
+		{{each data as val key}}
+		<li>
+			<a href="{{val.url}}" title="{{val.task_name}}" target="_bank"><img src="{{val.icon}}" alt="{{val.task_name}}"></a>
+			<div class="task-desc">
+				<dl class="task-desc-dl fl">
+					<dt class="ell"><a href="{{val.url}}" title="{{val.task_name}}" target="_bank">{{val.task_name}}</a></dt>
+					<dd class="ell">{{val.desc}}</dd>
+				</dl>
+				<a class="receive-btn button fr" href="javascript:;">领任务</a>
+			</div>
+		</li>
+		{{/each}}
+	{{/if}}
+ 

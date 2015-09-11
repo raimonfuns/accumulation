@@ -1,0 +1,24 @@
+		
+		    <div class="login-piece">
+		    	<div class="login-btn-box">
+		    	{{if result}}
+		    		{{if data.info.svip}}
+					<a class="upgrade-iden" href="javascript:;">
+		    			<i></i><span>升级尊贵身份</span>
+		    		</a>
+		    		{{else}}
+		    		<a class="join-svip" href="javascript:;">
+		    			<i></i><span>加入金钻</span>
+		    		</a>
+		    		{{/if}}
+				{{else}} 
+		    		<a class="join-svip" href="javascript:;">
+		    			<i></i><span>加入金钻</span>
+		    		</a>
+		    		<a class="upgrade-iden" href="javascript:;">
+		    			<i></i><span>升级尊贵身份</span>
+		    		</a>
+		    	{{/if}} 
+		    	</div>
+		    </div>
+		

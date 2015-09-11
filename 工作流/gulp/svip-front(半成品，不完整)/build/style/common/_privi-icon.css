@@ -1,0 +1,232 @@
+.circle-big,
+.big-circle-01,
+.gray-big-circle-01,
+.big-circle-02,
+.gray-big-circle-02,
+.big-circle-03,
+.gray-big-circle-03,
+.big-circle-04,
+.gray-big-circle-04,
+.big-circle-05,
+.gray-big-circle-05,
+.big-circle-06,
+.gray-big-circle-06,
+.big-circle-07,
+.gray-big-circle-07,
+.big-circle-08,
+.gray-big-circle-08,
+.big-circle-09,
+.gray-big-circle-09,
+.big-circle-10,
+.gray-big-circle-10,
+.big-circle-11,
+.gray-big-circle-11 {
+  width: 100px;
+  height: 100px;
+  background-image: url("http://file.do.yy.com/group3/M03/B8/F0/tz0GSFXvqiaAPjrWAAFKJkP28go634.png");
+  background-repeat: no-repeat;
+}
+/*V卡 100px*100px*/
+.big-circle-01 {
+  background-position: 0 0;
+}
+/*V卡 灰 100px*100px*/
+.gray-big-circle-01 {
+  background-position: -130px 0;
+}
+/*YY积分 100px*100px*/
+.big-circle-02 {
+  background-position: 0 -130px;
+}
+/*YY积分 灰 100px*100px*/
+.gray-big-circle-02 {
+  background-position: -130px -130px;
+}
+/*YY靓号 100px*100px*/
+.big-circle-03 {
+  background-position: 0 -260px;
+}
+/*YY靓号 灰 100px*100px*/
+.gray-big-circle-03 {
+  background-position: -130px -260px;
+}
+/*成长值 100px*100px*/
+.big-circle-04 {
+  background-position: 0 -390px;
+}
+/*成长值 灰 100px*100px*/
+.gray-big-circle-04 {
+  background-position: -130px -390px;
+}
+/*豪图标 100px*100px*/
+.big-circle-05 {
+  background-position: 0 -520px;
+}
+/*豪图标 灰 100px*100px*/
+.gray-big-circle-05 {
+  background-position: -130px -520px;
+}
+/*靓图标 100px*100px*/
+.big-circle-06 {
+  background-position: 0 -650px;
+}
+/*靓图标 灰 100px*100px*/
+.gray-big-circle-06 {
+  background-position: -130px -650px;
+}
+/*频道靓号 100px*100px*/
+.big-circle-07 {
+  background-position: 0 -780px;
+}
+/*频道靓号 灰 100px*100px*/
+.gray-big-circle-07 {
+  background-position: -130px -780px;
+}
+/*全频紫名 100px*100px*/
+.big-circle-08 {
+  background-position: 0 -910px;
+}
+/*全频紫名 灰 100px*100px*/
+.gray-big-circle-08 {
+  background-position: -130px -910px;
+}
+/*群靓号 100px*100px*/
+.big-circle-09 {
+  background-position: 0 -1040px;
+}
+/*群靓号 灰 100px*100px*/
+.gray-big-circle-09 {
+  background-position: -130px -1040px;
+}
+/*至尊紫V 100px*100px*/
+.big-circle-10 {
+  background-position: 0 -1170px;
+}
+/*至尊紫V 灰 100px*100px*/
+.gray-big-circle-10 {
+  background-position: -130px -1170px;
+}
+/*置顶卡 100px*100px*/
+.big-circle-11 {
+  background-position: 0 -1300px;
+}
+/*置顶卡 灰 100px*100px*/
+.gray-big-circle-11 {
+  background-position: -130px -1300px;
+}
+.circle-few,
+.few-circle-01,
+.gray-few-circle-01,
+.few-circle-02,
+.gray-few-circle-02,
+.few-circle-03,
+.gray-few-circle-03,
+.few-circle-04,
+.gray-few-circle-04,
+.few-circle-05,
+.gray-few-circle-05,
+.few-circle-06,
+.gray-few-circle-06,
+.few-circle-07,
+.gray-few-circle-07,
+.few-circle-08,
+.gray-few-circle-08,
+.few-circle-09,
+.gray-few-circle-09,
+.few-circle-10,
+.gray-few-circle-10,
+.few-circle-11,
+.gray-few-circle-11 {
+  width: 65px;
+  height: 65px;
+  background-image: url("http://file.do.yy.com/group3/M03/B8/F0/tz0GSFXvqiaAPjrWAAFKJkP28go634.png");
+  background-repeat: no-repeat;
+}
+/*V卡 65px*65px*/
+.few-circle-01 {
+  background-position: -260px 0;
+}
+/*V卡 灰 65px*65px*/
+.gray-few-circle-01 {
+  background-position: -360px 0;
+}
+/*YY积分 65px*65px*/
+.few-circle-02 {
+  background-position: -260px -130px;
+}
+/*YY积分 灰 65px*65px*/
+.gray-few-circle-02 {
+  background-position: -360px -130px;
+}
+/*YY靓号 65px*65px*/
+.few-circle-03 {
+  background-position: -260px -260px;
+}
+/*YY靓号 灰 65px*65px*/
+.gray-few-circle-03 {
+  background-position: -360px -130px;
+}
+/*成长值 65px*65px*/
+.few-circle-04 {
+  background-position: -260px -390px;
+}
+/*成长值 灰 65px*65px*/
+.gray-few-circle-04 {
+  background-position: -360px -390px;
+}
+/*豪图标 65px*65px*/
+.few-circle-05 {
+  background-position: -260px -520px;
+}
+/*豪图标 灰 65px*65px*/
+.gray-few-circle-05 {
+  background-position: -360px -520px;
+}
+/*靓图标 65px*65px*/
+.few-circle-06 {
+  background-position: -260px -650px;
+}
+/*靓图标 灰 65px*65px*/
+.gray-few-circle-06 {
+  background-position: -360px -650px;
+}
+/*频道靓号 65px*65px*/
+.few-circle-07 {
+  background-position: -260px -780px;
+}
+/*频道靓号 灰 65px*65px*/
+.gray-few-circle-07 {
+  background-position: -360px -780px;
+}
+/*全频紫名 65px*65px*/
+.few-circle-08 {
+  background-position: -260px -910px;
+}
+/*全频紫名 灰 65px*65px*/
+.gray-few-circle-08 {
+  background-position: -360px -910px;
+}
+/*群靓号 65px*65px*/
+.few-circle-09 {
+  background-position: -260px -1040px;
+}
+/*群靓号 灰 65px*65px*/
+.gray-few-circle-09 {
+  background-position: -360px -1040px;
+}
+/*至尊紫V 65px*65px*/
+.few-circle-10 {
+  background-position: -260px -1170px;
+}
+/*至尊紫V 灰 65px*65px*/
+.gray-few-circle-10 {
+  background-position: -360px -1170px;
+}
+/*置顶卡 65px*65px*/
+.few-circle-11 {
+  background-position: -260px -1300px;
+}
+/*置顶卡 灰 65px*65px*/
+.gray-few-circle-11 {
+  background-position: -360px -1300px;
+}
