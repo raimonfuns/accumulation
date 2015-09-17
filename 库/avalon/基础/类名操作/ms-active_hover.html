@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[radio]实现单项</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+	.active{
+		background: #0AF;
+		color: white;
+	}
+	.ms-class-test{
+		background: green;
+		width: 300px;
+		height: 100px;
+		border: 1px solid black;
+	}
+	.c-red{
+		background: red;
+	}
+	.c-blue{
+		background: blue;
+	}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		var vModel = avalon.define({
+			$id: 'test',
+			color: 'red',
+			toggle: true,
+			changeToggle: function () {
+				vModel.toggle = !vModel.toggle;
+			},
+			switchColor: function () {
+				vModel.color = vModel.color === 'red' ? 'blue' : 'red';
+			}
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div ms-active="active">测试：active</div>
+	<div class="ms-class-test" ms-hover="c-{{color}}:toggle"></div>
+	<button ms-click="switchColor">点我改变类名</button>
+	<button ms-click="q">点我改变toggle</button>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[select]</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'test',
+			flight: '',
+			hotel: []
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div>
+		<select ms-duplex="flight">
+			<option value="北京-天津">北京-天津</option>
+			<option value="北京-成都">北京-成都</option>
+			<option value="北京-上海">北京-上海</option>
+			<option value="北京-广州">北京-广州</option>
+		</select>
+	</div>
+	<div>
+		<select ms-duplex="hotel" multiple="true">
+			<option value="广州南站旅店">广州南站旅店</option>
+			<option value="广州怡东旅店">广州怡东旅店</option>
+			<option value="广州泊逸精品酒店">广州泊逸精品酒店</option>
+			<option value="广州红星国际酒店">广州红星国际酒店</option>
+		</select>
+	</div>
+	<div>航班: {{flight}}</div>
+	<div>酒店: {{hotel}}</div>
+
+	<!-- multiple="true"的选择框双向数据绑定有bug，选择2次以上失效
+	更新：并不是bug，这个属性需要配合shift键，实现多选 -->
+</body>
+</html>

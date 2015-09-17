@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[radio]实现单项</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+	.box div{width: 300px; height: 100px;}
+	.d1{background: red}
+	.d2{background: green}
+	.d3{background: blue}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		var vm = avalon.define({
+			$id: 'test',
+			currentIndex: 1,
+			isShowBox: false,
+			toggle: function (index) {
+				vm.currentIndex = index;
+			}
+		});
+
+		setTimeout(function () {
+			vm.isShowBox = true;
+		}, 3000);
+
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div class="box" ms-visible="isShowBox">
+		<botton ms-click="toggle(1)">色块[red]</botton>
+		<botton ms-click="toggle(2)">色块[green]</botton>
+		<botton ms-click="toggle(3)">色块[blue]</botton>
+		<div class="d1" ms-if="currentIndex == 1"></div>
+		<div class="d2" ms-if="currentIndex == 2"></div>
+		<div class="d3" ms-if="currentIndex == 3"></div>
+	</div>
+</body>
+</html>

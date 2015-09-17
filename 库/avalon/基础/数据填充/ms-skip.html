@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-skip</title>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'AAA',
+			name: 'raimon',
+			color: 'blue'
+		});
+		avalon.define({
+			$id: 'BBB',
+			name: 'raimonfuns',
+			color: 'green'
+		});
+		avalon.define({
+			$id: 'CCC',
+			name: 'dragon',
+		});
+		avalon.define({
+			$id: 'DDD',
+			name: 'jack',
+		});
+		avalon.define({
+			$id: 'EEE',
+			name: 'paul',
+			color: 'red',
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body>
+	<div ms-controller="AAA">
+		<div>{{name}}: {{color}}</div>
+		<div ms-controller="BBB">
+			<div>{{name}}: {{color}}</div>
+			<div ms-controller="CCC">
+				<div>{{name}}: {{color}}</div>
+			</div>
+			<div ms-important="DDD">
+				<div>{{name}}: {{color}}</div>
+			</div>
+			<div ms-skip="EEE">
+				<div>{{name}}: {{color}}</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[radio]</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+	.test {
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+		color: red;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+	}
+	.aaa{
+		color: #0AF; 
+		border: 1px solid #0AF;
+	}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		var vModel = avalon.define({
+			$id: 'ms-class',
+			toggle: true,
+			click: function (e) {
+				vModel.toggle = !vModel.toggle
+			}
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body>
+	<div ms-controller="ms-class">
+		<div class="test" ms-class="aaa:toggle" ms-click="click">点我</div>
+		<div ms-class="aaa" ms-class-1="bbb" ms-class-2="ccc">它的类名是aaa bbb ccc</div>
+		<div ms-class-2="aaa" ms-class="bbb" ms-class-1="ccc">它的类名是bbb ccc aaa</div>
+		<div ms-class="bbb" ms-class-1="aaa" ms-class-2="ccc">它的类名是bbb aaa ccc</div>
+		<div ms-class="xxx yyy zzz">它的类名是xxx yyy zzz</div>
+		<div ms-class="XXX YYY ZZZ:false">它的类名是XXX YYY ZZZ</div>
+	</div>
+</body>
+</html>

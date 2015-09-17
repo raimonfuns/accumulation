@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>interpolation-express</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'test',
+			number: 111,
+			number2: NaN,
+			bool: false,
+			bool2: true,
+			nn: null,
+			vv: 'undefined',
+			array: [1, 2, 3],
+			date: new Date,
+			object: {
+				name: '这是数据'
+			},
+			show: function () {
+				var elem = avalon(this);
+				console.log(
+					elem.data('number'), elem.data('number2'),
+					elem.data('bool'), elem.data('bool2'),
+					elem.data('null'), elem.data('void'),
+					elem.data('fn')
+				);
+				console.log(this['data-array']);
+				console.log(this['data-date']);
+				console.log(this['data-object']);
+			}
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div ms-data-number="number",
+		 ms-data-number2="number2",
+		 ms-data-bool="bool",
+		 ms-data-bool2="bool2",
+		 ms-data-void="vv",
+		 ms-data-null="nn",
+		 ms-data-array="array",
+		 ms-data-date="date",
+		 ms-data-object="object",
+		 ms-data-fn="show"
+		 ms-click="show">点我</div>
+
+	<!-- 对象和数组会绑定在节点对象上，而不会已data-的形式出现 -->
+</body>
+</html>

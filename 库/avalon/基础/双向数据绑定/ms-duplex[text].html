@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[text]</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'test',
+			username: 'raimonfuns',
+			password: '632330',
+			profile: 'test string'
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div>
+		<input type="text" ms-duplex="username">
+		<input type="password" ms-duplex="password">
+		<textarea ms-duplex="profile"></textarea>
+	</div>
+	<ul>
+		<li>{{username}}</li>
+		<li>{{password}}</li>
+		<li>{{profile}}</li>
+	</ul>
+</body>
+</html>

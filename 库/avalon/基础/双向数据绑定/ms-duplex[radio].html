@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[radio]</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'test',
+			isSure: true
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div>
+		<input type="radio" ms-duplex="isSure">确定
+	</div>
+	<div>{{isSure}}</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[radio]</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		var vmodel = avalon.define({
+			$id: 'test',
+			object: {}
+		});
+
+		setTimeout(function () {
+			vmodel.object = {
+				id: '123',
+				message: '提示 ! !'
+			}
+		}, 3000);
+
+		setTimeout(function () {
+			vmodel.object = {}
+		}, 5000);
+
+		setTimeout(function () {
+			vmodel.object = {
+				id: '123',
+				message: '又显示 ! !'
+			}
+		}, 7000);
+
+		avalon.scan();
+	});
+</script>
+</head>
+<body>
+	<div ms-controller="test">
+		这是比较输出结果:{{object.id != null}}
+		<div ms-visible="object.id != null">这是visible的:<span>{{object.message}}</span></div>
+		<div ms-if="object.id != null">这是if的:<span>{{object.message}}</span></div>
+	</div>
+</body>
+</html>

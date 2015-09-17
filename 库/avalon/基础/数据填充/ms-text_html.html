@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>interpolation-express</title>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'test',
+			content: '<b>hello avalon</b>'
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body>
+	<div ms-controller="test">
+		<div ms-text="content"></div>
+		<div ms-html="content"></div>
+	</div>
+</body>
+</html>

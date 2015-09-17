@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ms-duplex[checkbox]</title>
+<style>
+	body{background: #272822; color: #48BEEF;}
+</style>
+<script type="text/javascript" src="http://libs.cdnjs.net/avalon.js/1.5.1/avalon.js"></script>
+<script type="text/javascript">
+	avalon.ready(function () {
+		avalon.define({
+			$id: 'test',
+			hobbies: []
+		});
+		avalon.scan();
+	});
+</script>
+</head>
+<body ms-controller="test">
+	<div>
+		<input type="checkbox" ms-duplex="hobbies" value="football">足球
+		<input type="checkbox" ms-duplex="hobbies" value="basketball">篮球
+		<input type="checkbox" ms-duplex="hobbies" value="baseball">棒球
+	</div>
+	<div>{{hobbies}}</div>
+</body>
+</html>
