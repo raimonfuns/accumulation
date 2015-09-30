@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>backbone-model</title>
+<style type="text/css">
+body {
+    background: #272822;
+}
+</style>
+</head>
+<body>
+    <a href="#/manual">manual</a>
+</body>
+<script src="http://the5fireblog.b0.upaiyun.com/staticfile/jquery-1.10.2.js"></script>
+<script src="http://the5fireblog.b0.upaiyun.com/staticfile/underscore.js"></script>
+<script src="http://the5fireblog.b0.upaiyun.com/staticfile/backbone.js"></script>
+<script>
+(function ($) {
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+            "posts/:id" : "getPost",
+            "manual": "manual",
+            "*actions": "defaultRoute",
+        },
+        getPost: function(id) {
+            alert(id);
+        },
+        loadView: function( route, action ){
+            alert(route + "_" + action); // dashboard_graph
+        },
+        manual: function() {
+            alert("call manual");
+            app_router.navigate("/posts/" + 404, {trigger: true, replace: true});
+        }
+    });
+
+    var app_router = new AppRouter;
+
+    Backbone.history.start();
+        
+})(jQuery);
+</script>
+</html>
